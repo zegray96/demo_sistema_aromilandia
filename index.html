@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link id="iconoPagina" href="assets/img/icono.ico" rel="icon">
+  <title id="tituloPagina"></title>
+  <link rel="stylesheet" href="assets/css/fontawesome/all.min.css">
+  <link rel="stylesheet" href="assets/css/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/ruang-admin.min.css">
+  <link rel="stylesheet" href="assets/css/datatables/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+<body class="bg-gradient-login">
+   <!-- Preload -->
+  <div id="preload">
+    <div class="spinner-border"></div>
+  </div>
+  <!-- Fin preload -->
+
+	<!-- Login Content -->
+	<div id="container" class="container" style="display: none;">
+		<div class="row">
+			<div class="col-sm-9 col-md-7 col-lg-6 col-xl-5 mx-auto">
+				<div class="card card-signin my-5">
+					<div class="card-body">
+						<div class="text-center mb-2">
+							<img class="logo-login" src="assets/img/logo-sin-borde.png">
+							<h1 class="h4 text-gray-900 mb-4 mt-4">Ingrese sus datos</h1>
+						</div>
+
+						<form id="frmLogin" class="user">
+
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-user"></i></span>
+                </div>
+                <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Ingrese Usuario" autocomplete="off" required value="admin">
+              </div>
+
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                </div>
+
+                <input type="password" class="form-control" id="clave" name="clave" placeholder="Ingrese Clave" required value="admin">
+                <div class="input-group-append">
+                  <button id="btnVerClave" class="btn btn-primary" type="button"><i id="verClave" class="fas fa-eye"></i> </button>
+                </div>
+              </div>
+
+							<hr>
+
+							<div class="form-group">
+								<button id="btnIngresar" type="submit" class="btn btn-primary btn-block">Ingresar</button>
+							</div>
+
+						</form>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+  <!-- Login Content -->
+
+  <script src="assets/js/jquery/jquery.min.js"></script>
+  <script src="assets/js/jquery-easing/jquery.easing.min.js"></script>
+  <script src="assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/ruang-admin.min.js"></script>
+
+  <!-- Sweetalert2 -->
+  <script src="assets/js/sweetalert2/sweetalert2.all.min.js"></script>
+
+  <script src="vistas/scripts/login.js"></script>
+  <script src="vistas/scripts/sesion.js"></script>
+</body>
+
+</html>

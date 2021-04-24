@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html>
+<head lang="es">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link id="iconoPagina" href="../assets/img/icono.ico" rel="icon">
+	<title id="tituloPagina"></title>
+
+	<link rel="stylesheet" href="../assets/css/fontawesome/all.min.css">
+	<link rel="stylesheet" href="../assets/css/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" href="../assets/css/ruang-admin.min.css" >
+	<link rel="stylesheet" href="../assets/css/datatables/dataTables.bootstrap4.min.css">
+	<!-- Bootstrap DatePicker -->
+	<link rel="stylesheet" href="../assets/css/bootstrap-datepicker/bootstrap-datepicker.min.css">
+	<!-- Bootstrap select -->
+	<link rel="stylesheet" href="../assets/css/bootstrap-select/bootstrap-select.min.css">
+
+	<link rel="stylesheet" href="../assets/css/style.css">
+
+
+</head>
+
+<body id="page-top">
+	<!-- Preload -->
+	<div id="preload">
+		<div class="spinner-border"></div>
+	</div>
+	<!-- Fin preload -->
+
+	<!-- Wrapper -->
+	<div id="wrapper" style="display: none;">
+		<!-- Sidebar -->
+		<ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard">
+				<div class="sidebar-brand-icon">
+					<img id="logoHeader" src="../assets/img/logo-con-borde.png">
+				</div>
+				<div id="nombreEmpresaHeader" class="sidebar-brand-text mx-2">Aromilandia</div>
+			</a>
+			<hr class="sidebar-divider my-0">
+			<li class="nav-item active">
+				<a class="nav-link" href="dashboard">
+					<i class="fas fa-home"></i>
+					<span>Dashboard</span></a>
+			</li>
+				<hr class="sidebar-divider">
+
+				<div class="sidebar-heading">
+					Secciones
+				</div>
+
+				<!-- Acceso -->
+
+				<li class="nav-item">
+						<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true"
+						aria-controls="collapseTable">
+						<i class="fas fa-user-lock"></i>
+						<span>Acceso</span>
+					</a>
+					<div id="collapseTable" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+						<div class="bg-white py-2 collapse-inner rounded">
+							<a class="collapse-item" href="usuarios"><i class="fas fa-user"></i> Usuarios</a>
+							<a class="collapse-item" href="roles"><i class="fas fa-user-cog"></i> Roles</a>
+						</div>
+					</div>
+				</li>
+
+			<!-- Clientes -->
+
+			<li class="nav-item">
+				<a class="nav-link" href="clientes">
+					<i class="fas fa-users"></i>
+					<span>Clientes</span>
+				</a>
+			</li>
+
+
+			<!-- Articulos -->
+
+			<li class="nav-item">
+				<a class="nav-link" href="articulos">
+					<i class="fas fa-box-open"></i>
+					<span>Articulos</span>
+				</a>
+			</li>
+
+
+			<!-- Presupuestos -->
+
+
+			<li class="nav-item">
+				<a class="nav-link" href="presupuestos">
+					<i class="fas fa-dollar-sign"></i>
+					<span>Presupuestos</span>
+				</a>
+			</li>
+
+
+			<hr class="sidebar-divider">
+			<div class="version">Version 1.9</div>
+
+		</ul>
+		<!-- Sidebar -->
+
+		<!-- Content-wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+			<!-- Content -->
+			<div id="content">
+				<!-- TopBar -->
+				<nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
+						<button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
+							<i class="fa fa-bars"></i>
+						</button>
+						<span class="ml-2 text-white name-user">
+							Sucursal 1
+						</span>
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item dropdown no-arrow">
+								<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false">
+								<img class="img-user" src="../assets/img/user.png">
+								<span id="spanApellidoNombreUsu" class="ml-2 d-none d-lg-inline text-white name-user">
+									Perez Jose
+								</span>
+							</a>
+							<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+								<a class="dropdown-item" href="mi-cuenta">
+									<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+									Mi Cuenta
+								</a>
+
+								<a class="dropdown-item" href="configuracion">
+									<i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+									Configuración
+								</a>
+
+
+								<div class="dropdown-divider"></div>
+								<a id="btnCerrarSesion" class="dropdown-item cerrar-sesion">
+									<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+									Cerrar Sesión
+								</a>
+							</div>
+						</li>
+					</ul>
+				</nav>
+				<!-- Topbar -->
+
+				<!-- FIN HEADER -->
+
+				<!-- Container fluid -->
+				<div class="container-fluid" id="container-wrapper">
+
+					<div class="justify-content-between mb-4">
+						<div class="row">
+							<div class="col-sm-6">
+								<h1 class="h3 mb-0 text-gray-800"><i class="fas fa-dollar-sign"></i> Presupuestos</h1>
+							</div>
+							<div class="col-sm-6">
+
+
+								<div class="float-right mt-2 mt-sm-0 ml-2" role="group">
+									<button id='btnNuevo' class='btn btn-success'><i class='fas fa-plus-circle'></i> Nuevo</button>
+								</div>
+
+								<div id="divFiltrar" class="dropdown float-right mt-2 mt-sm-0">
+									<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<i class="fas fa-filter"></i> Filtrar
+									</button>
+									<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+										<a class="dropdown-item" data-toggle="modal" href="#filtrarPorFecha">Por Fecha</a>
+										<a class="dropdown-item" data-toggle="modal" href="#filtrarPorCliente">Por Cliente</a>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+					<div class="row mb-3">
+						<div class="col-lg-12">
+							<div class="card mb-4">
+								<div id="contenedor-cabecera" class="card-header py-1 d-flex flex-row align-items-center justify-content-between">
+
+
+
+								</div>
+								<!-- Tabla -->
+								<div id="listado" class="table-responsive p-3">
+									<table id="tblListado" class="table align-items-center table-hover table-bordered" style="width: 100%;">
+										<thead class="thead-light">
+											<th><i class="fas fa-th-list ml-5 pr-5"></i></th>
+											<th>&nbsp;Estado&nbsp;</th>
+											<th>&nbsp;Fecha&nbsp;Presupuesto&nbsp;</th>
+											<th>&nbsp;Hora&nbsp;Presupuesto&nbsp;</th>
+											<th>&nbsp;N°&nbsp;Presupuesto&nbsp;</th>
+											<th>&nbsp;Apellido&nbsp;y&nbsp;Nombre&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+											<th>&nbsp;Dni&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+											<th>&nbsp;Monto&nbsp;Total&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+											<th>&nbsp;Sucursal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+										</thead>
+										<tbody>
+											<tr>
+												<td><div class="dropdown">
+													<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+														Opciones
+													</button>
+													<div class="dropdown-menu">
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="mostrar('.$reg->id_presupuesto.')"><i class="fas fa-pencil-alt"></i> Editar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="eliminar_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-trash-alt"></i> Eliminar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="imprimir_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-print"></i> Imprimir</a></h6>
+													</div>
+												</div></td>
+												<td><span class="badge badge-success">PAGADO</span></td>
+												<td>2020-09-19 </td>
+												<td>08:00</td>
+												<td>1</td>
+												<td>Alexis Dotson</td>
+												<td>16501114 8862</td>
+												<td>$687.78</td>
+												<td>Sucursal 1</td>
+											</tr>
+											<tr>
+												<td><div class="dropdown">
+													<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+														Opciones
+													</button>
+													<div class="dropdown-menu">
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="mostrar('.$reg->id_presupuesto.')"><i class="fas fa-pencil-alt"></i> Editar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="eliminar_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-trash-alt"></i> Eliminar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="imprimir_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-print"></i> Imprimir</a></h6>
+													</div>
+												</div></td>
+												<td><span class="badge badge-success">PAGADO</span></td>
+												<td>2020-06-23 </td>
+												<td>18:33</td>
+												<td>2</td>
+												<td>Tiger Marquez</td>
+												<td>16511105 6403</td>
+												<td>$571.67</td>
+												<td>Sucursal 1</td>
+											</tr>
+											<tr>
+												<td><div class="dropdown">
+													<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+														Opciones
+													</button>
+													<div class="dropdown-menu">
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="mostrar('.$reg->id_presupuesto.')"><i class="fas fa-pencil-alt"></i> Editar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="eliminar_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-trash-alt"></i> Eliminar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="imprimir_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-print"></i> Imprimir</a></h6>
+													</div>
+												</div></td>
+												<td><span class="badge badge-success">PAGADO</span></td>
+												<td>2020-10-24 </td>
+												<td>21:18</td>
+												<td>3</td>
+												<td>Lana Johns</td>
+												<td>16010707 7885</td>
+												<td>$814.45</td>
+												<td>Sucursal 1</td>
+											</tr>
+											<tr>
+												<td><div class="dropdown">
+													<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+														Opciones
+													</button>
+													<div class="dropdown-menu">
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="mostrar('.$reg->id_presupuesto.')"><i class="fas fa-pencil-alt"></i> Editar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="eliminar_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-trash-alt"></i> Eliminar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="imprimir_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-print"></i> Imprimir</a></h6>
+													</div>
+												</div></td>
+												<td><span class="badge badge-success">PAGADO</span></td>
+												<td>2020-10-20 </td>
+												<td>15:04</td>
+												<td>4</td>
+												<td>Madison Pearson</td>
+												<td>16310413 7587</td>
+												<td>$750.96</td>
+												<td>Sucursal 1</td>
+											</tr>
+											<tr>
+												<td><div class="dropdown">
+													<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+														Opciones
+													</button>
+													<div class="dropdown-menu">
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="mostrar('.$reg->id_presupuesto.')"><i class="fas fa-pencil-alt"></i> Editar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="eliminar_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-trash-alt"></i> Eliminar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="imprimir_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-print"></i> Imprimir</a></h6>
+													</div>
+												</div></td>
+												<td><span class="badge badge-success">PAGADO</span></td>
+												<td>2022-03-27 </td>
+												<td>17:49</td>
+												<td>5</td>
+												<td>Philip Rivas</td>
+												<td>16221008 0210</td>
+												<td>$831.74</td>
+												<td>Sucursal 1</td>
+											</tr>
+											<tr>
+												<td><div class="dropdown">
+													<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+														Opciones
+													</button>
+													<div class="dropdown-menu">
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="mostrar('.$reg->id_presupuesto.')"><i class="fas fa-pencil-alt"></i> Editar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="eliminar_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-trash-alt"></i> Eliminar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="imprimir_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-print"></i> Imprimir</a></h6>
+													</div>
+												</div></td>
+												<td><span class="badge badge-success">PAGADO</span></td>
+												<td>2020-06-26 </td>
+												<td>13:26</td>
+												<td>6</td>
+												<td>Uma Wade</td>
+												<td>16360512 9703</td>
+												<td>$045.90</td>
+												<td>Sucursal 1</td>
+											</tr>
+											<tr>
+												<td><div class="dropdown">
+													<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+														Opciones
+													</button>
+													<div class="dropdown-menu">
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="mostrar('.$reg->id_presupuesto.')"><i class="fas fa-pencil-alt"></i> Editar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="eliminar_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-trash-alt"></i> Eliminar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="imprimir_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-print"></i> Imprimir</a></h6>
+													</div>
+												</div></td>
+												<td><span class="badge badge-success">PAGADO</span></td>
+												<td>2022-03-11 </td>
+												<td>00:40</td>
+												<td>7</td>
+												<td>Linus Saunders</td>
+												<td>16760118 6443</td>
+												<td>$650.79</td>
+												<td>Sucursal 1</td>
+											</tr>
+											<tr>
+												<td><div class="dropdown">
+													<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+														Opciones
+													</button>
+													<div class="dropdown-menu">
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="mostrar('.$reg->id_presupuesto.')"><i class="fas fa-pencil-alt"></i> Editar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="eliminar_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-trash-alt"></i> Eliminar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="imprimir_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-print"></i> Imprimir</a></h6>
+													</div>
+												</div></td>
+												<td><span class="badge badge-success">PAGADO</span></td>
+												<td>2020-04-26 </td>
+												<td>18:55</td>
+												<td>8</td>
+												<td>Laith Mueller</td>
+												<td>16190504 3798</td>
+												<td>$306.69</td>
+												<td>Sucursal 1</td>
+											</tr>
+											<tr>
+												<td><div class="dropdown">
+													<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+														Opciones
+													</button>
+													<div class="dropdown-menu">
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="mostrar('.$reg->id_presupuesto.')"><i class="fas fa-pencil-alt"></i> Editar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="eliminar_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-trash-alt"></i> Eliminar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="imprimir_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-print"></i> Imprimir</a></h6>
+													</div>
+												</div></td>
+												<td><span class="badge badge-success">PAGADO</span></td>
+												<td>2021-08-09 </td>
+												<td>18:23</td>
+												<td>9</td>
+												<td>William Barton</td>
+												<td>16480313 1921</td>
+												<td>$070.48</td>
+												<td>Sucursal 1</td>
+											</tr>
+											<tr>
+												<td><div class="dropdown">
+													<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+														Opciones
+													</button>
+													<div class="dropdown-menu">
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="mostrar('.$reg->id_presupuesto.')"><i class="fas fa-pencil-alt"></i> Editar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="eliminar_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-trash-alt"></i> Eliminar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="imprimir_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-print"></i> Imprimir</a></h6>
+													</div>
+												</div></td>
+												<td><span class="badge badge-success">PAGADO</span></td>
+												<td>2020-09-06 </td>
+												<td>10:06</td>
+												<td>10</td>
+												<td>Odette Rowe</td>
+												<td>16910724 6796</td>
+												<td>$747.19</td>
+												<td>Sucursal 1</td>
+											</tr>
+											<tr>
+												<td><div class="dropdown">
+													<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+														Opciones
+													</button>
+													<div class="dropdown-menu">
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="mostrar('.$reg->id_presupuesto.')"><i class="fas fa-pencil-alt"></i> Editar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="eliminar_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-trash-alt"></i> Eliminar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="imprimir_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-print"></i> Imprimir</a></h6>
+													</div>
+												</div></td>
+												<td><span class="badge badge-success">PAGADO</span></td>
+												<td>2020-06-29 </td>
+												<td>08:55</td>
+												<td>11</td>
+												<td>Bryar Valencia</td>
+												<td>16020204 3857</td>
+												<td>$649.36</td>
+												<td>Sucursal 1</td>
+											</tr>
+											<tr>
+												<td><div class="dropdown">
+													<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+														Opciones
+													</button>
+													<div class="dropdown-menu">
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="mostrar('.$reg->id_presupuesto.')"><i class="fas fa-pencil-alt"></i> Editar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="eliminar_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-trash-alt"></i> Eliminar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="imprimir_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-print"></i> Imprimir</a></h6>
+													</div>
+												</div></td>
+												<td><span class="badge badge-success">PAGADO</span></td>
+												<td>2020-08-15 </td>
+												<td>13:50</td>
+												<td>12</td>
+												<td>Emery Lawson</td>
+												<td>16340707 1400</td>
+												<td>$161.25</td>
+												<td>Sucursal 1</td>
+											</tr>
+											<tr>
+												<td><div class="dropdown">
+													<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+														Opciones
+													</button>
+													<div class="dropdown-menu">
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="mostrar('.$reg->id_presupuesto.')"><i class="fas fa-pencil-alt"></i> Editar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="eliminar_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-trash-alt"></i> Eliminar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="imprimir_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-print"></i> Imprimir</a></h6>
+													</div>
+												</div></td>
+												<td><span class="badge badge-success">PAGADO</span></td>
+												<td>2022-03-11 </td>
+												<td>11:54</td>
+												<td>13</td>
+												<td>Blaine Cameron</td>
+												<td>16700619 0495</td>
+												<td>$621.29</td>
+												<td>Sucursal 1</td>
+											</tr>
+											<tr>
+												<td><div class="dropdown">
+													<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+														Opciones
+													</button>
+													<div class="dropdown-menu">
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="mostrar('.$reg->id_presupuesto.')"><i class="fas fa-pencil-alt"></i> Editar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="eliminar_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-trash-alt"></i> Eliminar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="imprimir_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-print"></i> Imprimir</a></h6>
+													</div>
+												</div></td>
+												<td><span class="badge badge-success">PAGADO</span></td>
+												<td>2021-03-20 </td>
+												<td>07:43</td>
+												<td>14</td>
+												<td>Galena Church</td>
+												<td>16250102 2368</td>
+												<td>$476.16</td>
+												<td>Sucursal 1</td>
+											</tr>
+											<tr>
+												<td><div class="dropdown">
+													<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+														Opciones
+													</button>
+													<div class="dropdown-menu">
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="mostrar('.$reg->id_presupuesto.')"><i class="fas fa-pencil-alt"></i> Editar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="eliminar_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-trash-alt"></i> Eliminar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="imprimir_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-print"></i> Imprimir</a></h6>
+													</div>
+												</div></td>
+												<td><span class="badge badge-success">PAGADO</span></td>
+												<td>2021-04-27 </td>
+												<td>17:54</td>
+												<td>15</td>
+												<td>Beau Navarro</td>
+												<td>16020702 1510</td>
+												<td>$726.13</td>
+												<td>Sucursal 1</td>
+											</tr>
+											<tr>
+												<td><div class="dropdown">
+													<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+														Opciones
+													</button>
+													<div class="dropdown-menu">
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="mostrar('.$reg->id_presupuesto.')"><i class="fas fa-pencil-alt"></i> Editar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="eliminar_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-trash-alt"></i> Eliminar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="imprimir_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-print"></i> Imprimir</a></h6>
+													</div>
+												</div></td>
+												<td><span class="badge badge-success">PAGADO</span></td>
+												<td>2020-09-21 </td>
+												<td>02:36</td>
+												<td>16</td>
+												<td>Tamekah Bean</td>
+												<td>16300812 9243</td>
+												<td>$467.36</td>
+												<td>Sucursal 1</td>
+											</tr>
+											<tr>
+												<td><div class="dropdown">
+													<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+														Opciones
+													</button>
+													<div class="dropdown-menu">
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="mostrar('.$reg->id_presupuesto.')"><i class="fas fa-pencil-alt"></i> Editar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="eliminar_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-trash-alt"></i> Eliminar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="imprimir_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-print"></i> Imprimir</a></h6>
+													</div>
+												</div></td>
+												<td><span class="badge badge-success">PAGADO</span></td>
+												<td>2020-07-04 </td>
+												<td>21:55</td>
+												<td>17</td>
+												<td>Lynn Thornton</td>
+												<td>16460225 9964</td>
+												<td>$533.87</td>
+												<td>Sucursal 1</td>
+											</tr>
+											<tr>
+												<td><div class="dropdown">
+													<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+														Opciones
+													</button>
+													<div class="dropdown-menu">
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="mostrar('.$reg->id_presupuesto.')"><i class="fas fa-pencil-alt"></i> Editar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="eliminar_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-trash-alt"></i> Eliminar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="imprimir_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-print"></i> Imprimir</a></h6>
+													</div>
+												</div></td>
+												<td><span class="badge badge-success">PAGADO</span></td>
+												<td>2020-10-13 </td>
+												<td>12:35</td>
+												<td>18</td>
+												<td>Tanek Stevenson</td>
+												<td>16500821 4545</td>
+												<td>$703.71</td>
+												<td>Sucursal 1</td>
+											</tr>
+											<tr>
+												<td><div class="dropdown">
+													<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+														Opciones
+													</button>
+													<div class="dropdown-menu">
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="mostrar('.$reg->id_presupuesto.')"><i class="fas fa-pencil-alt"></i> Editar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="eliminar_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-trash-alt"></i> Eliminar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="imprimir_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-print"></i> Imprimir</a></h6>
+													</div>
+												</div></td>
+												<td><span class="badge badge-success">PAGADO</span></td>
+												<td>2021-04-04 </td>
+												<td>22:35</td>
+												<td>19</td>
+												<td>Amy Townsend</td>
+												<td>16880410 4563</td>
+												<td>$752.34</td>
+												<td>Sucursal 1</td>
+											</tr>
+											<tr>
+												<td><div class="dropdown">
+													<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+														Opciones
+													</button>
+													<div class="dropdown-menu">
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="mostrar('.$reg->id_presupuesto.')"><i class="fas fa-pencil-alt"></i> Editar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="eliminar_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-trash-alt"></i> Eliminar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="imprimir_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-print"></i> Imprimir</a></h6>
+													</div>
+												</div></td>
+												<td><span class="badge badge-success">PAGADO</span></td>
+												<td>2020-06-30 </td>
+												<td>07:34</td>
+												<td>20</td>
+												<td>Isabella Sims</td>
+												<td>16530523 9310</td>
+												<td>$411.64</td>
+												<td>Sucursal 1</td>
+											</tr>
+											<tr>
+												<td><div class="dropdown">
+													<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+														Opciones
+													</button>
+													<div class="dropdown-menu">
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="mostrar('.$reg->id_presupuesto.')"><i class="fas fa-pencil-alt"></i> Editar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="eliminar_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-trash-alt"></i> Eliminar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="imprimir_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-print"></i> Imprimir</a></h6>
+													</div>
+												</div></td>
+												<td><span class="badge badge-success">PAGADO</span></td>
+												<td>2020-06-15 </td>
+												<td>21:00</td>
+												<td>21</td>
+												<td>Chloe Holcomb</td>
+												<td>16250211 6557</td>
+												<td>$848.21</td>
+												<td>Sucursal 1</td>
+											</tr>
+											<tr>
+												<td><div class="dropdown">
+													<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+														Opciones
+													</button>
+													<div class="dropdown-menu">
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="mostrar('.$reg->id_presupuesto.')"><i class="fas fa-pencil-alt"></i> Editar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="eliminar_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-trash-alt"></i> Eliminar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="imprimir_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-print"></i> Imprimir</a></h6>
+													</div>
+												</div></td>
+												<td><span class="badge badge-success">PAGADO</span></td>
+												<td>2021-07-14 </td>
+												<td>13:15</td>
+												<td>22</td>
+												<td>Kennan Francis</td>
+												<td>16950509 4871</td>
+												<td>$316.46</td>
+												<td>Sucursal 1</td>
+											</tr>
+											<tr>
+												<td><div class="dropdown">
+													<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+														Opciones
+													</button>
+													<div class="dropdown-menu">
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="mostrar('.$reg->id_presupuesto.')"><i class="fas fa-pencil-alt"></i> Editar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="eliminar_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-trash-alt"></i> Eliminar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="imprimir_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-print"></i> Imprimir</a></h6>
+													</div>
+												</div></td>
+												<td><span class="badge badge-success">PAGADO</span></td>
+												<td>2020-12-10 </td>
+												<td>16:03</td>
+												<td>23</td>
+												<td>Tate Delgado</td>
+												<td>16960625 6601</td>
+												<td>$719.75</td>
+												<td>Sucursal 1</td>
+											</tr>
+											<tr>
+												<td><div class="dropdown">
+													<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+														Opciones
+													</button>
+													<div class="dropdown-menu">
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="mostrar('.$reg->id_presupuesto.')"><i class="fas fa-pencil-alt"></i> Editar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="eliminar_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-trash-alt"></i> Eliminar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="imprimir_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-print"></i> Imprimir</a></h6>
+													</div>
+												</div></td>
+												<td><span class="badge badge-success">PAGADO</span></td>
+												<td>2020-09-10 </td>
+												<td>02:59</td>
+												<td>24</td>
+												<td>Amy Holder</td>
+												<td>16600506 7910</td>
+												<td>$485.83</td>
+												<td>Sucursal 1</td>
+											</tr>
+											<tr>
+												<td><div class="dropdown">
+													<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+														Opciones
+													</button>
+													<div class="dropdown-menu">
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="mostrar('.$reg->id_presupuesto.')"><i class="fas fa-pencil-alt"></i> Editar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="eliminar_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-trash-alt"></i> Eliminar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="imprimir_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-print"></i> Imprimir</a></h6>
+													</div>
+												</div></td>
+												<td><span class="badge badge-success">PAGADO</span></td>
+												<td>2020-07-11 </td>
+												<td>04:12</td>
+												<td>25</td>
+												<td>Darrel Bridges</td>
+												<td>16721111 8901</td>
+												<td>$119.68</td>
+												<td>Sucursal 1</td>
+											</tr>
+											<tr>
+												<td><div class="dropdown">
+													<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+														Opciones
+													</button>
+													<div class="dropdown-menu">
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="mostrar('.$reg->id_presupuesto.')"><i class="fas fa-pencil-alt"></i> Editar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="eliminar_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-trash-alt"></i> Eliminar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="imprimir_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-print"></i> Imprimir</a></h6>
+													</div>
+												</div></td>
+												<td><span class="badge badge-success">PAGADO</span></td>
+												<td>2021-03-03 </td>
+												<td>11:25</td>
+												<td>26</td>
+												<td>Kamal Mcmillan</td>
+												<td>16450826 4472</td>
+												<td>$268.99</td>
+												<td>Sucursal 1</td>
+											</tr>
+											<tr>
+												<td><div class="dropdown">
+													<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+														Opciones
+													</button>
+													<div class="dropdown-menu">
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="mostrar('.$reg->id_presupuesto.')"><i class="fas fa-pencil-alt"></i> Editar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="eliminar_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-trash-alt"></i> Eliminar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="imprimir_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-print"></i> Imprimir</a></h6>
+													</div>
+												</div></td>
+												<td><span class="badge badge-success">PAGADO</span></td>
+												<td>2021-11-14 </td>
+												<td>06:32</td>
+												<td>27</td>
+												<td>Blossom Valdez</td>
+												<td>16350623 3521</td>
+												<td>$534.83</td>
+												<td>Sucursal 1</td>
+											</tr>
+											<tr>
+												<td><div class="dropdown">
+													<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+														Opciones
+													</button>
+													<div class="dropdown-menu">
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="mostrar('.$reg->id_presupuesto.')"><i class="fas fa-pencil-alt"></i> Editar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="eliminar_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-trash-alt"></i> Eliminar</a></h6>
+														<h6><a class="dropdown-item" style="cursor:pointer; color:#3a3b45;" onclick="imprimir_presupuesto('.$reg->id_presupuesto.')"><i class="fas fa-print"></i> Imprimir</a></h6>
+													</div>
+												</div></td>
+												<td><span class="badge badge-success">PAGADO</span></td>
+												<td>2021-06-04 </td>
+												<td>07:21</td>
+												<td>28</td>
+												<td>Keegan Compton</td>
+												<td>16570407 1694</td>
+												<td>$226.46</td>
+												<td>Sucursal 1</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<!-- End tabla -->
+
+								<!-- Formulario -->
+								<div id="formulario">
+									<div class="card-body">
+										<form id="form">
+
+
+											<input type="hidden" id="idPresupuesto" name="idPresupuesto">
+
+
+
+											<!-- Encabezado presupuesto -->
+											<div class="form-group row mb-4">
+												<div class="col-12 col-sm-6 col-lg-3">
+													<label>N° Presupuesto</label>
+													<input type="text" class="form-control" id="nroPresupuesto" name="nroPresupuesto" readonly>
+												</div>
+
+
+												<div class="col-12 col-sm-6 col-lg-3 mt-3 mt-sm-0">
+													<label><span class="text-danger">(*)</span> Estado</label>
+													<select name="estadoPresu" id="estadoPresu" data-lang="es_ES" class="selectpicker form-control" required>
+														<option value="PAGADO">PAGADO</option>
+														<option value="FALTA PAGAR">FALTA PAGAR</option>
+													</select>
+												</div>
+
+												<div class="d-none d-lg-block col-lg-1">
+
+												</div>
+
+												<div class="col-12 col-sm-6 col-lg-3 mt-3 mt-lg-0">
+													<label><span class="text-danger">(*)</span> Fecha Presup.</label>
+													<div class="input-group date">
+														<div class="input-group-prepend">
+															<span class="input-group-text"><i class="fas fa-calendar"></i></span>
+														</div>
+														<input type="text" class="form-control" id="fechaPresupuesto" name="fechaPresupuesto" required autocomplete="off">
+													</div>
+												</div>
+
+												<div class="col-12 col-sm-6 col-lg-2 mt-3 mt-lg-0">
+													<label>Hora</label>
+													<input type="text" class="form-control" id="horaPresupuesto" name="horaPresupuesto" readonly>
+												</div>
+											</div>
+											<hr>
+											<!-- Fin encabezado presupuesto -->
+
+											<!-- Datos cliente -->
+											<div class="form-group row mb-4">
+												<div class="col-12 col-sm-6 col-lg-3">
+													<label><span class="text-danger">(*)</span> Cod. Cliente</label>
+													<div class="input-group">
+														<input type="text" class="form-control" id="codCliente" name="codCliente" autocomplete="off">
+														<div class="input-group-append">
+															<button type="button" class="btn btn-primary" id="btnBuscarCliente"><i class="fas fa-search"></i></button>
+														</div>
+														<div class="input-group-append">
+															<button type="button" class="btn btn-success" id="btnNuevoCliente"><i class="fas fa-plus-circle"></i></button>
+														</div>
+													</div>
+												</div>
+
+												<div class="col-12 col-sm-6 col-lg-3 mt-3 mt-sm-0">
+													<label>Dni</label>
+													<input type="text" class="form-control" id="dniPresu" name="dniPresu" readonly>
+												</div>
+
+												<div class="col-12 col-lg-6 mt-3 mt-lg-0">
+													<label>Apellido y Nombre</label>
+													<input type="text" class="form-control" id="apellidoNombrePresu" name="apellidoNombrePresu" readonly>
+												</div>
+
+												<div class="col-12 col-sm-6 col-lg-3 mt-3">
+													<label>Cuit</label>
+													<input type="text" class="form-control" id="cuitPresu" name="cuitPresu" readonly>
+												</div>
+
+											</div>
+
+											<hr>
+											<!-- Fin datos cliente  -->
+
+											<!-- Datos articulo -->
+											<div class="form-group row mb-4">
+												<div class="col-12 col-md-6 col-lg-3">
+													<label><span class="text-danger">(*)</span> Cod. Articulo</label>
+													<div class="input-group">
+														<input type="text" class="form-control" id="codArticulo" name="codArticulo" autocomplete="off">
+														<div class="input-group-append">
+															<button type="button" class="btn btn-primary" id="btnBuscarArticulo"><i class="fas fa-search"></i></button>
+														</div>
+													</div>
+												</div>
+
+												<div class="col-12 col-md-6 col-lg-6 mt-3 mt-md-0">
+													<label><span class="text-danger">(*)</span> Descripción</label>
+													<input type="text" class="form-control" id="descripcion" name="descripcion" autocomplete="off" readonly style="text-transform: capitalize;">
+												</div>
+
+												<div class="col-12 col-md-6 col-lg-3 mt-3 mt-lg-0">
+													<label><span class="text-danger">(*)</span> Precio Unit.</label>
+													<input type="text" class="form-control" id="precioUnitario" name="precioUnitario" placeholder="00,0" autocomplete="off" readonly>
+												</div>
+
+												<div class="col-12 col-md-6 col-lg-4 mt-3">
+													<label><span class="text-danger">(*)</span> Cantidad</label>
+													<div class="input-group">
+														<input type="number" min="1" class="form-control" id="cantidad" name="cantidad">
+														<div class="input-group-append">
+															<button id="btnAgregarDetalle" type="button" class="btn btn-success btn-agregar"><i class="fas fa-cart-plus"></i> Agregar</button>
+														</div>
+													</div>
+
+												</div>
+											</div>
+											<!-- Fin datos articulo -->
+
+											<!-- Tabla -->
+											<div style="height: 60vh !important;" class="panel-body table-responsive">
+												<table id="tblDetalles" class="table table-striped table-bordered table-condensed table-hover" style="width:100%; ">
+													<thead class="thead-dark">
+														<th id="opDetalle"><i class="fas fa-th-list ml-2 mr-2"></i></th>
+														<th>Descripción</th>
+														<th>Cantidad</th>
+														<th>Precio&nbsp;Unit.</th>
+														<th>Subtotal</th>
+													</thead>
+
+													<tbody>
+
+													</tbody>
+												</table>
+											</div>
+
+											<hr>
+											<!-- Fin tabla -->
+
+
+											<!-- Desc y total -->
+											<div class="form-group row mb-4">
+
+												<div class="col-12 col-sm-6 col-lg-3">
+													<h5 class="font-weight-bold"> Tipo Descuento</h5>
+													<select id="tipoDesc" name="tipoDesc" data-lang="es_ES" class="selectpicker form-control" required>
+														<option value="sin_descuento" selected>Sin descuento</option>
+														<option value="porcentaje">%</option>
+														<option value="monto">$</option>
+													</select>
+												</div>
+
+												<div class="col-12 col-sm-6 col-lg-3 mt-3 mt-sm-0">
+													<h5 class="font-weight-bold">Valor Descuento</h5>
+													<input type="number" min="0" class="font-weight-bold form-control" id="valorDesc" name="valorDesc">
+												</div>
+
+												<div class="col-6 col-lg-2">
+												</div>
+
+												<div class="col-12 col-sm-6 col-lg-4 mt-3 mt-lg-0">
+													<h5 class="font-weight-bold"> Total</h5>
+													<div class="input-group mb-3">
+														<div class="input-group-prepend">
+															<span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+														</div>
+														<input type="text" class="font-weight-bold form-control" id="montoTotal" name="montoTotal" readonly>
+													</div>
+												</div>
+
+
+											</div>
+											<!-- Fin Desc y total -->
+
+											<div class="mt-4 mb-4 float-right">
+												<button type="button" id="btnCancelar" class="btn btn-danger">Cancelar</button>
+												<button type="submit" id="btnGuardar" class="btn btn-primary ml-3">Guardar</button>
+											</div>
+
+										</form>
+									</div>
+								</div>
+								<!-- End formulario -->
+							</div>
+						</div>
+					</div>
+
+					<!-- Modales -->
+
+						<!-- nuevo cliente-->
+						<div class="modal fade" id="nuevoCliente" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+							<div class="modal-dialog modal-lg">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body table-responsive">
+										<form id="formNuevoCliente">
+
+											<div class="form-group row mb-3">
+												<div class="col-12 col-md-6">
+													<label><span class="text-danger">(*)</span> Estado</label>
+													<select id="estado" name="estado" data-lang="es_ES" title="Seleccione estado" class="selectpicker form-control" required>
+														<option value="ACTIVO">ACTIVO</option>
+														<option value="INACTIVO">INACTIVO</option>
+													</select>
+												</div>
+
+												<div class="col-12 col-md-6 mt-3 mt-md-0">
+													<label><span class="text-danger">(*)</span> Cuit</label>
+													<input type="text" class="form-control" id="cuit" name="cuit" data-maxsize="11" required autocomplete="off">
+												</div>
+
+											</div>
+
+											<div class="form-group row mb-3">
+												<div class="col-12 col-md-6">
+													<label><span class="text-danger">(*)</span> Apellido y Nombre</label>
+													<input type="text" class="form-control" id="apellidoNombre" name="apellidoNombre"
+													data-maxsize="30" required autocomplete="off" style="text-transform: capitalize;">
+												</div>
+
+												<div class="col-12 col-md-6 mt-3 mt-md-0">
+													<label><span class="text-danger">(*)</span> Dni</label>
+													<input type="text" class="form-control" id="dni" name="dni" data-maxsize="8" required autocomplete="off">
+												</div>
+											</div>
+
+											<div class="form-group row mb-3">
+												<div class="col-12 col-md-6">
+													<label><span class="text-danger">(*)</span> Domicilio</label>
+													<input type="text" class="form-control" id="domicilio" name="domicilio"
+													data-maxsize="60" required autocomplete="off" style="text-transform: capitalize;">
+												</div>
+
+												<div class="col-12 col-md-6 mt-3 mt-md-0">
+													<label><span class="text-danger">(*)</span> Telefono</label>
+													<input type="text" class="form-control" id="telefono" name="telefono" data-maxsize="50" required autocomplete="off">
+												</div>
+											</div>
+
+											<div class="form-group row mb-3">
+												<div class="col-12 col-md-6">
+													<label><span class="text-danger">(*)</span> Localidad</label>
+													<input type="text" class="form-control" id="localidad" name="localidad"
+													data-maxsize="50" required autocomplete="off" style="text-transform: capitalize;">
+												</div>
+
+												<div class="col-12 col-md-6 mt-3 mt-md-0">
+													<label><span class="text-danger">(*)</span> Provincia</label>
+													<input type="text" class="form-control" id="provincia" name="provincia" data-maxsize="50" required autocomplete="off" style="text-transform: capitalize;">
+												</div>
+											</div>
+
+
+											<div class="mt-4 mb-4 float-right">
+												<button type="button" id="btnCancelarCliente" class="btn btn-danger">Cancelar</button>
+												<button type="submit" id="btnGuardarCliente" class="btn btn-primary ml-3">Guardar</button>
+											</div>
+
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Fin nuevo cliente -->
+
+						<!-- Buscar cliente  para presupuesto-->
+						<div class="modal fade" id="buscarClienteParaPresu" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+							<div class="modal-dialog modal-lg">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body table-responsive">
+										<div class="form-group row mb-3">
+											<div class="col-12 col-md-6">
+												<input type="text" class="form-control" id="buscarNombreEnPresu" placeholder="Buscar apellido y nombre" autocomplete="off">
+											</div>
+
+											<div class="col-12 col-md-6 mt-3 mt-md-0">
+												<input type="text" class="form-control" id="buscarDniEnPresu" placeholder="Buscar dni" autocomplete="off">
+											</div>
+										</div>
+
+										<table id="tblClientesPresu" class="table table-striped table-bordered table-condensed table-hover" style="width: 100%;">
+											<thead>
+												<th><i class="fas fa-th-list ml-2 mr-2"></i></th>
+												<th>&nbsp;Apellido&nbsp;y&nbsp;Nombre&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+												<th>&nbsp;Cuit&nbsp;</th>
+												<th>&nbsp;Dni&nbsp;</th>
+												<th>&nbsp;Domicilio&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+												<th>&nbsp;Localidad&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+												<th>&nbsp;Provincia&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+											</thead>
+											<tbody>
+												<tr>
+													<td><button class="btn btn-success btn-sm" onclick="agregar_cliente('1','6678278','Brody Landry','1')"><i class="fas fa-arrow-circle-right"></i></button></td>
+													<td>Brody Landry</td>
+													<td>1</td>
+													<td>6678278</td>
+													<td>P.O. Box 858, 6032 Mollis. Ave</td>
+													<td>Springdale</td>
+													<td>Arkansas</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Fin buscar cliente para presupuesto -->
+
+
+						<!-- Buscar articulo-->
+						<div class="modal fade" id="buscarArticulo" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+							<div class="modal-dialog modal-lg">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body table-responsive">
+										<div class="form-group row mb-3">
+											<div class="col-12 col-md-6">
+												<input type="text" class="form-control" id="buscarDescripcionEnPresu" placeholder="Buscar descripción" autocomplete="off">
+											</div>
+
+											<div class="col-12 col-md-6 mt-3 mt-md-0">
+												<input type="text" class="form-control" id="buscarCodArtEnPresu" placeholder="Buscar codigo" autocomplete="off">
+											</div>
+										</div>
+
+										<table id="tblArticulos" class="table table-striped table-bordered table-condensed table-hover" style="width: 100%;">
+											<thead>
+												<th><i class="fas fa-th-list ml-2 mr-2"></i></th>
+												<th>&nbsp;Cod.&nbsp;Art.&nbsp;</th>
+												<th>&nbsp;Descripción&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+												<th>&nbsp;Stock&nbsp;Actual&nbsp;</th>
+											</thead>
+											<tbody>
+												<tr>
+													<td><div class="input-group-prepend">
+														<button class="btn btn-primary dropdown-toggle btn-sm" type="button" data-toggle="dropdown"
+														aria-haspopup="true" aria-expanded="false"></button>
+														<div class="dropdown-menu">
+															<h5><a class="dropdown-item badge badge-danger text-white" style="cursor: pointer;" onclick="agregar_articulo('2','Articulo De Prueba','120,00','M')">Mayorista $120.00</a></h5>
+															<h5><a class="dropdown-item badge badge-success text-white" style="cursor: pointer;" onclick="agregar_articulo('2','Articulo De Prueba','150,00','P')">Publico $150.00</a></h5>
+														</div>
+													</div></td>
+													<td>1</td>
+													<td>Articulo de Prueba</td>
+													<td>100</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Fin buscar articulo -->
+
+						<!-- Listar presupuestos por cliente-->
+						<div class="modal fade" id="listarPresupuestosPorCliente" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+							<div class="modal-dialog modal-lg">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body table-responsive">
+										<button type="button" class="btn btn-success mb-3" id="btnAceptarPresupuesto"> Aceptar</button>
+										<table id="tblPresupuestosPorCliente" class="table table-striped table-bordered table-condensed table-hover" style="width: 100%;">
+											<thead>
+												<th><i class="fas fa-th-list ml-2 mr-2"></i></th>
+												<th>&nbsp;Estado&nbsp;</th>
+												<th>&nbsp;Fecha&nbsp;Presup.&nbsp;</th>
+												<th>&nbsp;N°&nbsp;Presupuesto&nbsp;</th>
+												<th>&nbsp;Monto&nbsp;Total&nbsp;</th>
+											</thead>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Fin listar presupuestos por cliente -->
+
+						<!-- Filtrar por fecha -->
+						<div class="modal fade" id="filtrarPorFecha" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+							<div class="modal-dialog modal-sm">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+
+										<div class="form-group" id="divFiltrarPorFechas">
+											<div class="input-daterange input-group">
+												<input autocomplete="off" type="text" class="input-sm form-control" name="fechaIniFiltrar" id="fechaIniFiltrar" placeholder="Desde">
+												<div class="input-group-prepend">
+													<span class="input-group-text">-</span>
+												</div>
+												<input autocomplete="off" type="text" class="input-sm form-control" name="fechaFinFiltrar" id="fechaFinFiltrar" placeholder="Hasta">
+											</div>
+										</div>
+
+										<div class="float-right">
+											<button type="button" id="btnFiltrarPorFechas" class="btn btn-primary">Filtrar</button>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Fin filtrar fecha -->
+
+						<!-- Filtrar por cliente-->
+						<div class="modal fade" id="filtrarPorCliente" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+							<div class="modal-dialog modal-lg">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body table-responsive">
+										<div class="form-group row mb-3">
+											<div class="col-12 col-md-6">
+												<input type="text" class="form-control" id="buscarNombreEnFiltrar" placeholder="Buscar apellido y nombre" autocomplete="off">
+											</div>
+
+											<div class="col-12 col-md-6 mt-3 mt-md-0">
+												<input type="text" class="form-control" id="buscarDniEnFiltrar" placeholder="Buscar dni" autocomplete="off">
+											</div>
+										</div>
+
+										<table id="tblFiltrarPorCliente" class="table table-striped table-bordered table-condensed table-hover" style="width: 100%;">
+											<thead>
+												<th><i class="fas fa-th-list ml-2 mr-2"></i></th>
+												<th>&nbsp;Apellido&nbsp;y&nbsp;Nombre&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+												<th>&nbsp;Cuit&nbsp;</th>
+												<th>&nbsp;Dni&nbsp;</th>
+												<th>&nbsp;Domicilio&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+												<th>&nbsp;Localidad&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+												<th>&nbsp;Provincia&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+											</thead>
+											<tbody>
+												<tr>
+													<td><button class="btn btn-success btn-sm" onclick="listar_presupuestos_por_cliente_filtro('1')"><i class="fas fa-arrow-circle-right"></i></button></td>
+													<td>Brody Landry</td>
+													<td>1</td>
+													<td>6678278</td>
+													<td>P.O. Box 858, 6032 Mollis. Ave</td>
+													<td>Springdale</td>
+													<td>Arkansas</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Fin fitrar por cliente -->
+
+					<!-- Fin modales -->
+				</div>
+				<!-- End Container fluid -->
+			</div>
+			<!-- End Content -->
+
+			<!-- FOOTER -->
+
+			<!--Modal Cargando -->
+			<div class="modal" id="cargandoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+				<div class="modal-dialog modal-sm">
+					<div class="modal-content">
+						<div class="modal-header">
+							<div class="spinner-border cargando-modal"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--Fin Modal Cargando -->
+
+			<!-- Footer -->
+			<footer class="sticky-footer bg-white">
+				<div class="container my-auto">
+					<div class="copyright text-center my-auto">
+						<span>Version 1.9
+
+						</span>
+					</div>
+				</div>
+			</footer>
+			<!-- Footer -->
+		</div>
+		<!-- End Content wrapper -->
+	</div>
+	<!-- End wrapper -->
+
+	<!-- Scroll to top -->
+	<a class="scroll-to-top rounded" href="#page-top">
+		<i class="fas fa-angle-up"></i>
+	</a>
+
+	<script src="../assets/js/jquery/jquery.min.js"></script>
+	<script src="../assets/js/jquery-easing/jquery.easing.min.js"></script>
+	<script src="../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+	<script src="../assets/js/ruang-admin.min.js"></script>
+
+	<!-- Datatables -->
+	<script src="../assets/js/datatables/jquery.dataTables.min.js"></script>
+	<script src="../assets/js/datatables/dataTables.bootstrap4.min.js"></script>
+	<script src="../assets/js/datatables/buttons.print.min.js"></script>
+	<script src="../assets/js/datatables/dataTables.buttons.min.js"></script>
+	<script src="../assets/js/datatables/jszip.min.js"></script>
+	<script src="../assets/js/datatables/pdfmake.min.js"></script>
+	<script src="../assets/js/datatables/vfs_fonts.js"></script>
+	<script src="../assets/js/datatables/buttons.html5.min.js"></script>
+
+	<!-- Sweetalert2 -->
+	<script src="../assets/js/sweetalert2/sweetalert2.all.min.js"></script>
+
+	<!-- Maxlength -->
+	<script src="../assets/js/maxlength/maxlength.js"></script>
+
+	<!-- Bootstrap Datepicker -->
+	<script src="../assets/js/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+	<script src="../assets/js/bootstrap-datepicker/bootstrap-datepicker.es.min.js"></script>
+
+	<!-- Bootstrap select -->
+	<script src="../assets/js/bootstrap-select/bootstrap-select.min.js"></script>
+	<!-- Idioma bootstrap-select -->
+	<script src="../assets/js/bootstrap-select/defaults-es_ES.js"></script>
+
+	<script src="scripts/sesion.js"></script>
+
+	<script src="scripts/presupuesto.js"></script>
+
+</body>
+
+</html>

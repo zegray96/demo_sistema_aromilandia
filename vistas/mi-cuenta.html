@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head lang="es">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link id="iconoPagina" href="../assets/img/icono.ico" rel="icon">
+	<title id="tituloPagina"></title>
+
+	<link rel="stylesheet" href="../assets/css/fontawesome/all.min.css">
+	<link rel="stylesheet" href="../assets/css/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" href="../assets/css/ruang-admin.min.css" >
+	<link rel="stylesheet" href="../assets/css/datatables/dataTables.bootstrap4.min.css">
+	<!-- Bootstrap DatePicker -->
+	<link rel="stylesheet" href="../assets/css/bootstrap-datepicker/bootstrap-datepicker.min.css">
+	<!-- Bootstrap select -->
+	<link rel="stylesheet" href="../assets/css/bootstrap-select/bootstrap-select.min.css">
+
+	<link rel="stylesheet" href="../assets/css/style.css">
+
+
+</head>
+
+<body id="page-top">
+	<!-- Preload -->
+	<div id="preload">
+		<div class="spinner-border"></div>
+	</div>
+	<!-- Fin preload -->
+
+	<!-- Wrapper -->
+	<div id="wrapper" style="display: none;">
+		<!-- Sidebar -->
+		<ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard">
+				<div class="sidebar-brand-icon">
+					<img id="logoHeader" src="../assets/img/logo-con-borde.png">
+				</div>
+				<div id="nombreEmpresaHeader" class="sidebar-brand-text mx-2">Aromilandia</div>
+			</a>
+			<hr class="sidebar-divider my-0">
+			<li class="nav-item active">
+				<a class="nav-link" href="dashboard">
+					<i class="fas fa-home"></i>
+					<span>Dashboard</span></a>
+			</li>
+				<hr class="sidebar-divider">
+
+				<div class="sidebar-heading">
+					Secciones
+				</div>
+
+				<!-- Acceso -->
+
+				<li class="nav-item">
+						<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true"
+						aria-controls="collapseTable">
+						<i class="fas fa-user-lock"></i>
+						<span>Acceso</span>
+					</a>
+					<div id="collapseTable" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+						<div class="bg-white py-2 collapse-inner rounded">
+							<a class="collapse-item" href="usuarios"><i class="fas fa-user"></i> Usuarios</a>
+							<a class="collapse-item" href="roles"><i class="fas fa-user-cog"></i> Roles</a>
+						</div>
+					</div>
+				</li>
+
+			<!-- Clientes -->
+
+			<li class="nav-item">
+				<a class="nav-link" href="clientes">
+					<i class="fas fa-users"></i>
+					<span>Clientes</span>
+				</a>
+			</li>
+
+
+			<!-- Articulos -->
+
+			<li class="nav-item">
+				<a class="nav-link" href="articulos">
+					<i class="fas fa-box-open"></i>
+					<span>Articulos</span>
+				</a>
+			</li>
+
+
+			<!-- Presupuestos -->
+
+
+			<li class="nav-item">
+				<a class="nav-link" href="presupuestos">
+					<i class="fas fa-dollar-sign"></i>
+					<span>Presupuestos</span>
+				</a>
+			</li>
+
+
+			<hr class="sidebar-divider">
+			<div class="version">Version 1.9</div>
+
+		</ul>
+		<!-- Sidebar -->
+
+		<!-- Content-wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+			<!-- Content -->
+			<div id="content">
+				<!-- TopBar -->
+				<nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
+						<button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
+							<i class="fa fa-bars"></i>
+						</button>
+						<span class="ml-2 text-white name-user">
+							Sucursal 1
+						</span>
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item dropdown no-arrow">
+								<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false">
+								<img class="img-user" src="../assets/img/user.png">
+								<span id="spanApellidoNombreUsu" class="ml-2 d-none d-lg-inline text-white name-user">
+									Perez Jose
+								</span>
+							</a>
+							<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+								<a class="dropdown-item" href="mi-cuenta">
+									<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+									Mi Cuenta
+								</a>
+
+								<a class="dropdown-item" href="configuracion">
+									<i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+									Configuración
+								</a>
+
+
+								<div class="dropdown-divider"></div>
+								<a id="btnCerrarSesion" class="dropdown-item cerrar-sesion">
+									<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+									Cerrar Sesión
+								</a>
+							</div>
+						</li>
+					</ul>
+				</nav>
+				<!-- Topbar -->
+
+				<!-- FIN HEADER -->
+
+
+	<!-- Container fluid -->
+	<div class="container-fluid" id="container-wrapper">
+		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+			<h1 class="h3 mb-0 text-gray-800"><i class="fas fa-user"></i> Mi Cuenta</h1>
+		</div>
+
+		<div class="row mb-3">
+			<div class="col-lg-12">
+				<div class="card mb-4">
+					<!-- Formulario -->
+					<div id="formulario">
+						<div class="card-body">
+							<form id="form">
+
+								<div class="form-group row mb-3">
+									<div class="col-12 col-md-6">
+										<label><span class="text-danger">(*)</span> Apellido y Nombre</label>
+										<input style="text-transform: capitalize;" autocomplete="off" type="text" class="form-control" id="apellidoNombre" name="apellidoNombre" data-maxsize="30" required value="Perez Jose">
+									</div>
+
+									<div class="col-12 col-md-6 mt-3 mt-md-0">
+										<label><span class="text-danger">(*)</span> Usuario</label>
+										<input autocomplete="off" type="text" class="form-control" id="usuario" name="usuario" data-maxsize="30" required value="admin">
+									</div>
+								</div>
+
+								<div class="form-group row mb-3">
+									<div class="col-12 col-md-6">
+										<label class="mr-1"><span class="text-danger">(*)</span> Clave</label>
+										<a id="linkModificarClave" data-toggle="modal" href="#modificarClave" class="badge badge-info" style="font-size: 15px"> Modificar</a>
+										<input type="password" class="form-control" id="clave" name="clave" data-maxsize="100" required placeholder="Ingrese clave" value="*******" readonly>
+									</div>
+								</div>
+
+
+
+								<div class="mt-4 mb-4 float-right">
+									<button type="button" id="btnCancelar" class="btn btn-danger">Cancelar</button>
+									<button type="submit" id="btnGuardar" class="btn btn-primary ml-3">Guardar</button>
+								</div>
+
+							</form>
+						</div>
+					</div>
+					<!-- End formulario -->
+				</div>
+			</div>
+		</div>
+
+		<!-- Modales -->
+
+          <!-- Modificar clave -->
+          <div class="modal fade" id="modificarClave" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog modal-sm">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+
+                	<form id="formModificarClave">
+
+                		<div class="form-group">
+                			<input type="password" class="form-control" id="claveModificar" name="claveModificar" data-maxsize="100" required placeholder="Ingrese nueva clave">
+                		</div>
+
+                		<div class="form-group">
+                			<input type="password" class="form-control" id="repetirClaveModificar" name="repetirClaveModificar" data-maxsize="100" required placeholder="Repita nueva clave">
+                		</div>
+
+                		<div class="mb-4 float-right">
+                			<button type="button" id="btnCancelarModificarClave" class="btn btn-danger">Cancelar</button>
+                			<button type="submit" id="btnGuardarModificarClave" class="btn btn-primary">Guardar</button>
+                		</div>
+
+                	</form>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fin modificar clave -->
+
+		<!-- Fin modales -->
+	</div>
+	<!-- End Container fluid -->
+</div>
+<!-- End Content -->
+
+<!-- FOOTER -->
+
+			<!--Modal Cargando -->
+			<div class="modal" id="cargandoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+				<div class="modal-dialog modal-sm">
+					<div class="modal-content">
+						<div class="modal-header">
+							<div class="spinner-border cargando-modal"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--Fin Modal Cargando -->
+
+			<!-- Footer -->
+			<footer class="sticky-footer bg-white">
+				<div class="container my-auto">
+					<div class="copyright text-center my-auto">
+						<span>Version 1.9
+
+						</span>
+					</div>
+				</div>
+			</footer>
+			<!-- Footer -->
+		</div>
+		<!-- End Content wrapper -->
+	</div>
+	<!-- End wrapper -->
+
+	<!-- Scroll to top -->
+	<a class="scroll-to-top rounded" href="#page-top">
+		<i class="fas fa-angle-up"></i>
+	</a>
+
+	<script src="../assets/js/jquery/jquery.min.js"></script>
+	<script src="../assets/js/jquery-easing/jquery.easing.min.js"></script>
+	<script src="../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+	<script src="../assets/js/ruang-admin.min.js"></script>
+
+	<!-- Datatables -->
+	<script src="../assets/js/datatables/jquery.dataTables.min.js"></script>
+	<script src="../assets/js/datatables/dataTables.bootstrap4.min.js"></script>
+	<script src="../assets/js/datatables/buttons.print.min.js"></script>
+	<script src="../assets/js/datatables/dataTables.buttons.min.js"></script>
+	<script src="../assets/js/datatables/jszip.min.js"></script>
+	<script src="../assets/js/datatables/pdfmake.min.js"></script>
+	<script src="../assets/js/datatables/vfs_fonts.js"></script>
+	<script src="../assets/js/datatables/buttons.html5.min.js"></script>
+
+	<!-- Sweetalert2 -->
+	<script src="../assets/js/sweetalert2/sweetalert2.all.min.js"></script>
+
+	<!-- Maxlength -->
+	<script src="../assets/js/maxlength/maxlength.js"></script>
+
+	<!-- Bootstrap Datepicker -->
+	<script src="../assets/js/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+	<script src="../assets/js/bootstrap-datepicker/bootstrap-datepicker.es.min.js"></script>
+
+	<!-- Bootstrap select -->
+	<script src="../assets/js/bootstrap-select/bootstrap-select.min.js"></script>
+	<!-- Idioma bootstrap-select -->
+	<script src="../assets/js/bootstrap-select/defaults-es_ES.js"></script>
+
+	<script src="scripts/sesion.js"></script>
+
+	<script src="scripts/mi-cuenta.js"></script>
+
+</body>
+
+</html>
+

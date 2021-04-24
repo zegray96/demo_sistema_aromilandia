@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html>
+<head lang="es">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link id="iconoPagina" href="../assets/img/icono.ico" rel="icon">
+	<title id="tituloPagina"></title>
+
+	<link rel="stylesheet" href="../assets/css/fontawesome/all.min.css">
+	<link rel="stylesheet" href="../assets/css/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" href="../assets/css/ruang-admin.min.css" >
+	<link rel="stylesheet" href="../assets/css/datatables/dataTables.bootstrap4.min.css">
+	<!-- Bootstrap DatePicker -->
+	<link rel="stylesheet" href="../assets/css/bootstrap-datepicker/bootstrap-datepicker.min.css">
+	<!-- Bootstrap select -->
+	<link rel="stylesheet" href="../assets/css/bootstrap-select/bootstrap-select.min.css">
+
+	<link rel="stylesheet" href="../assets/css/style.css">
+
+
+</head>
+
+<body id="page-top">
+	<!-- Preload -->
+	<div id="preload">
+		<div class="spinner-border"></div>
+	</div>
+	<!-- Fin preload -->
+
+	<!-- Wrapper -->
+	<div id="wrapper" style="display: none;">
+		<!-- Sidebar -->
+		<ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard">
+				<div class="sidebar-brand-icon">
+					<img id="logoHeader" src="../assets/img/logo-con-borde.png">
+				</div>
+				<div id="nombreEmpresaHeader" class="sidebar-brand-text mx-2">Aromilandia</div>
+			</a>
+			<hr class="sidebar-divider my-0">
+			<li class="nav-item active">
+				<a class="nav-link" href="dashboard">
+					<i class="fas fa-home"></i>
+					<span>Dashboard</span></a>
+			</li>
+				<hr class="sidebar-divider">
+
+				<div class="sidebar-heading">
+					Secciones
+				</div>
+
+				<!-- Acceso -->
+
+				<li class="nav-item">
+						<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true"
+						aria-controls="collapseTable">
+						<i class="fas fa-user-lock"></i>
+						<span>Acceso</span>
+					</a>
+					<div id="collapseTable" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+						<div class="bg-white py-2 collapse-inner rounded">
+							<a class="collapse-item" href="usuarios"><i class="fas fa-user"></i> Usuarios</a>
+							<a class="collapse-item" href="roles"><i class="fas fa-user-cog"></i> Roles</a>
+						</div>
+					</div>
+				</li>
+
+			<!-- Clientes -->
+
+			<li class="nav-item">
+				<a class="nav-link" href="clientes">
+					<i class="fas fa-users"></i>
+					<span>Clientes</span>
+				</a>
+			</li>
+
+
+			<!-- Articulos -->
+
+			<li class="nav-item">
+				<a class="nav-link" href="articulos">
+					<i class="fas fa-box-open"></i>
+					<span>Articulos</span>
+				</a>
+			</li>
+
+
+			<!-- Presupuestos -->
+
+
+			<li class="nav-item">
+				<a class="nav-link" href="presupuestos">
+					<i class="fas fa-dollar-sign"></i>
+					<span>Presupuestos</span>
+				</a>
+			</li>
+
+
+			<hr class="sidebar-divider">
+			<div class="version">Version 1.9</div>
+
+		</ul>
+		<!-- Sidebar -->
+
+		<!-- Content-wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+			<!-- Content -->
+			<div id="content">
+				<!-- TopBar -->
+				<nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
+						<button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
+							<i class="fa fa-bars"></i>
+						</button>
+						<span class="ml-2 text-white name-user">
+							Sucursal 1
+						</span>
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item dropdown no-arrow">
+								<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false">
+								<img class="img-user" src="../assets/img/user.png">
+								<span id="spanApellidoNombreUsu" class="ml-2 d-none d-lg-inline text-white name-user">
+									Perez Jose
+								</span>
+							</a>
+							<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+								<a class="dropdown-item" href="mi-cuenta">
+									<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+									Mi Cuenta
+								</a>
+
+								<a class="dropdown-item" href="configuracion">
+									<i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+									Configuración
+								</a>
+
+
+								<div class="dropdown-divider"></div>
+								<a id="btnCerrarSesion" class="dropdown-item cerrar-sesion">
+									<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+									Cerrar Sesión
+								</a>
+							</div>
+						</li>
+					</ul>
+				</nav>
+				<!-- Topbar -->
+
+				<!-- FIN HEADER -->
+
+				<!-- Container fluid -->
+				<div class="container-fluid" id="container-wrapper">
+
+					<div class="justify-content-between mb-4">
+						<div class="row">
+							<div class="col-sm-8">
+								<h1 class="h3 mb-0 text-gray-800"><i class="fas fa-box-open"></i> Articulos</h1>
+							</div>
+							<div class="col-sm-4">
+								<div class="btn-group float-right mt-3 mt-sm-0" role="group">
+									<button id='btnNuevo' class='btn btn-success'><i class='fas fa-plus-circle'></i> Nuevo</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row mb-3">
+						<div class="col-lg-12">
+							<div class="card mb-4">
+								<div id="contenedor-cabecera" class="card-header py-1 d-flex flex-row align-items-center justify-content-between">
+									<!--  -->
+								</div>
+								<!-- Tabla -->
+								<div id="listado" class="table-responsive p-3">
+									<table id="tblListado" class="table align-items-center table-hover table-bordered" style="width: 100%;">
+										<thead class="thead-light">
+											<th><i class="fas fa-th-list ml-2 mr-2"></i></th>
+											<th>&nbsp;Cod.&nbsp;</th>
+											<th>&nbsp;Estado&nbsp;</th>
+											<th>&nbsp;Descripción&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+											<th>&nbsp;Precio&nbsp;U.&nbsp;Mayorista&nbsp;</th>
+											<th>&nbsp;Precio&nbsp;U.&nbsp;Público&nbsp;</th>
+											<th>&nbsp;Stock&nbsp;Actual&nbsp;</th>
+										</thead>
+										<tbody>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>1</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>egestas ligula. Nullam feugiat</td>
+												<td>$893.85</td>
+												<td>$504.49</td>
+												<td>120</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>2</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>vel, convallis in, cursus et, eros. Proin ultrices. Duis volutpat</td>
+												<td>$935.13</td>
+												<td>$362.15</td>
+												<td>92</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>3</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>vulputate ullamcorper magna. Sed eu</td>
+												<td>$212.13</td>
+												<td>$777.39</td>
+												<td>99</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>4</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Maecenas iaculis aliquet diam. Sed diam</td>
+												<td>$804.54</td>
+												<td>$131.14</td>
+												<td>34</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>5</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>placerat velit. Quisque varius.</td>
+												<td>$167.05</td>
+												<td>$543.31</td>
+												<td>137</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>6</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>magna. Phasellus dolor elit, pellentesque a, facilisis non, bibendum</td>
+												<td>$769.36</td>
+												<td>$647.91</td>
+												<td>101</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>7</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>orci tincidunt adipiscing. Mauris molestie pharetra nibh. Aliquam ornare,</td>
+												<td>$817.93</td>
+												<td>$990.99</td>
+												<td>104</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>8</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>tristique ac,</td>
+												<td>$822.01</td>
+												<td>$760.34</td>
+												<td>159</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>9</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>faucibus. Morbi vehicula. Pellentesque</td>
+												<td>$831.37</td>
+												<td>$890.34</td>
+												<td>47</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>10</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>enim. Etiam</td>
+												<td>$111.64</td>
+												<td>$444.92</td>
+												<td>5</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>11</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>inceptos hymenaeos. Mauris ut quam</td>
+												<td>$862.57</td>
+												<td>$566.07</td>
+												<td>113</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>12</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>blandit congue. In scelerisque scelerisque dui.</td>
+												<td>$426.62</td>
+												<td>$399.67</td>
+												<td>7</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>13</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>egestas ligula. Nullam feugiat placerat velit.</td>
+												<td>$640.73</td>
+												<td>$800.04</td>
+												<td>9</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>14</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>eget varius ultrices,</td>
+												<td>$899.88</td>
+												<td>$912.79</td>
+												<td>128</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>15</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Donec est mauris,</td>
+												<td>$329.28</td>
+												<td>$485.93</td>
+												<td>130</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>16</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>volutpat ornare, facilisis</td>
+												<td>$788.17</td>
+												<td>$297.00</td>
+												<td>31</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>17</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>mi felis, adipiscing fringilla, porttitor vulputate, posuere vulputate,</td>
+												<td>$700.42</td>
+												<td>$779.07</td>
+												<td>127</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>18</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>nonummy ultricies ornare, elit elit fermentum risus,</td>
+												<td>$432.20</td>
+												<td>$903.67</td>
+												<td>184</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>19</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>dolor, nonummy ac, feugiat</td>
+												<td>$208.28</td>
+												<td>$274.18</td>
+												<td>136</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>20</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>montes, nascetur ridiculus mus. Aenean eget</td>
+												<td>$858.93</td>
+												<td>$189.27</td>
+												<td>46</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>21</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Maecenas malesuada fringilla est. Mauris</td>
+												<td>$611.83</td>
+												<td>$192.81</td>
+												<td>169</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>22</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>ac sem ut</td>
+												<td>$192.63</td>
+												<td>$961.80</td>
+												<td>9</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>23</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>nec quam. Curabitur vel lectus.</td>
+												<td>$115.54</td>
+												<td>$248.04</td>
+												<td>152</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>24</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>porttitor eros nec tellus. Nunc lectus pede, ultrices</td>
+												<td>$465.68</td>
+												<td>$437.34</td>
+												<td>65</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>25</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>diam. Pellentesque habitant morbi tristique senectus et</td>
+												<td>$181.10</td>
+												<td>$745.38</td>
+												<td>4</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>26</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>eu, eleifend nec, malesuada</td>
+												<td>$122.09</td>
+												<td>$207.45</td>
+												<td>114</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>27</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>purus</td>
+												<td>$577.95</td>
+												<td>$819.17</td>
+												<td>93</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>28</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>lacus. Cras interdum. Nunc sollicitudin</td>
+												<td>$730.16</td>
+												<td>$915.44</td>
+												<td>63</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>29</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>tempor, est ac mattis semper,</td>
+												<td>$746.46</td>
+												<td>$154.73</td>
+												<td>40</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>30</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>ullamcorper, velit in aliquet lobortis, nisi nibh lacinia</td>
+												<td>$803.23</td>
+												<td>$950.05</td>
+												<td>106</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>31</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>auctor</td>
+												<td>$116.47</td>
+												<td>$437.69</td>
+												<td>20</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>32</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>volutpat. Nulla dignissim. Maecenas ornare egestas ligula. Nullam feugiat placerat</td>
+												<td>$589.61</td>
+												<td>$612.70</td>
+												<td>77</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>33</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>vitae sodales nisi magna</td>
+												<td>$334.72</td>
+												<td>$516.90</td>
+												<td>96</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>34</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Maecenas libero est, congue a, aliquet</td>
+												<td>$878.39</td>
+												<td>$207.42</td>
+												<td>192</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>35</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>purus ac tellus. Suspendisse</td>
+												<td>$764.78</td>
+												<td>$181.74</td>
+												<td>135</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>36</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>non</td>
+												<td>$975.08</td>
+												<td>$209.00</td>
+												<td>84</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>37</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>mauris, aliquam eu, accumsan sed, facilisis</td>
+												<td>$883.83</td>
+												<td>$451.96</td>
+												<td>103</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>38</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Nunc mauris elit, dictum eu, eleifend nec, malesuada ut,</td>
+												<td>$649.99</td>
+												<td>$947.62</td>
+												<td>51</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>39</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>vulputate, posuere vulputate, lacus. Cras interdum. Nunc</td>
+												<td>$489.45</td>
+												<td>$709.58</td>
+												<td>70</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>40</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>auctor velit. Aliquam nisl. Nulla eu neque pellentesque massa</td>
+												<td>$277.59</td>
+												<td>$859.99</td>
+												<td>76</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>41</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>eu</td>
+												<td>$391.29</td>
+												<td>$999.18</td>
+												<td>196</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>42</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Phasellus libero mauris,</td>
+												<td>$214.34</td>
+												<td>$574.37</td>
+												<td>51</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>43</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>senectus et netus et malesuada fames ac turpis</td>
+												<td>$363.98</td>
+												<td>$867.67</td>
+												<td>18</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>44</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>elementum, lorem ut aliquam</td>
+												<td>$741.31</td>
+												<td>$928.65</td>
+												<td>181</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>45</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Integer tincidunt aliquam arcu.</td>
+												<td>$367.39</td>
+												<td>$746.62</td>
+												<td>5</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<!-- End tabla -->
+
+								<!-- Formulario -->
+								<div id="formulario">
+									<div class="card-body">
+										<form id="form">
+
+											<input type="hidden" id="codArticulo" name="codArticulo">
+
+											<div class="form-group row" id="divCodArticulo">
+												<div class="col-12">
+													<h5><span class="badge badge-secondary" id="codArticuloText"></span></h5>
+												</div>
+											</div>
+
+											<div class="form-group row mb-3">
+												<div class="col-md-12 col-lg-4">
+													<label><span class="text-danger">(*)</span> Descripción</label>
+													<input type="text" class="form-control" id="descripcion" name="descripcion" autocomplete="off" data-maxsize="55" required style="text-transform: capitalize;">
+												</div>
+
+												<div class="col-12 col-md-6 col-lg-4 mt-3 mt-lg-0">
+													<label>Precio U. Mayorista</label>
+													<input type="text" class="form-control" id="precioUnitarioMayorista" name="precioUnitarioMayorista" placeholder="00.0" autocomplete="off">
+												</div>
+
+												<div class="col-12 col-md-6 col-lg-4 mt-3 mt-lg-0">
+													<label>Precio U. Público</label>
+													<input type="text" class="form-control" id="precioUnitarioPublico" name="precioUnitarioPublico" placeholder="00.0" autocomplete="off">
+												</div>
+											</div>
+
+											<div class="form-group row mb-3">
+												<div class="col-12 col-md-6">
+													<label>Stock Actual</label>
+													<input type="number" min="1" class="form-control" id="stockActual" name="stockActual" readonly>
+												</div>
+
+												<div class="col-12 col-md-6 mt-3 mt-md-0">
+													<label>Cantidad</label>
+													<div class="input-group">
+														<input type="number" min="1" class="form-control" id="cantidad" name="cantidad">
+														<div class="input-group-append">
+															<button type="button" id="sumarStock" class="btn btn-success"><i class="fas fa-plus"></i></button>
+															<button type="button" id="restarStock" class="btn btn-danger"><i class="fas fa-minus"></i></button>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="form-group row mb-3">
+												<div class="col-12 col-md-6 mt-3 mt-md-0">
+													<label><span class="text-danger">(*)</span> Estado</label>
+													<select id="estado" name="estado" data-lang="es_ES" title="Seleccione estado" class="selectpicker form-control" required>
+														<option value="ACTIVO">ACTIVO</option>
+														<option value="INACTIVO">INACTIVO</option>
+													</select>
+												</div>
+											</div>
+
+
+
+											<div class="mt-4 mb-4 float-right">
+												<button type="button" id="btnCancelar" class="btn btn-danger">Cancelar</button>
+												<button type="submit" id="btnGuardar" class="btn btn-primary ml-3">Guardar</button>
+											</div>
+
+										</form>
+									</div>
+								</div>
+								<!-- End formulario -->
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End Container fluid -->
+			</div>
+			<!-- End Content -->
+
+			<!-- FOOTER -->
+
+			<!--Modal Cargando -->
+			<div class="modal" id="cargandoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+				<div class="modal-dialog modal-sm">
+					<div class="modal-content">
+						<div class="modal-header">
+							<div class="spinner-border cargando-modal"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--Fin Modal Cargando -->
+
+			<!-- Footer -->
+			<footer class="sticky-footer bg-white">
+				<div class="container my-auto">
+					<div class="copyright text-center my-auto">
+						<span>Version 1.9
+
+						</span>
+					</div>
+				</div>
+			</footer>
+			<!-- Footer -->
+		</div>
+		<!-- End Content wrapper -->
+	</div>
+	<!-- End wrapper -->
+
+	<!-- Scroll to top -->
+	<a class="scroll-to-top rounded" href="#page-top">
+		<i class="fas fa-angle-up"></i>
+	</a>
+
+	<script src="../assets/js/jquery/jquery.min.js"></script>
+	<script src="../assets/js/jquery-easing/jquery.easing.min.js"></script>
+	<script src="../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+	<script src="../assets/js/ruang-admin.min.js"></script>
+
+	<!-- Datatables -->
+	<script src="../assets/js/datatables/jquery.dataTables.min.js"></script>
+	<script src="../assets/js/datatables/dataTables.bootstrap4.min.js"></script>
+	<script src="../assets/js/datatables/buttons.print.min.js"></script>
+	<script src="../assets/js/datatables/dataTables.buttons.min.js"></script>
+	<script src="../assets/js/datatables/jszip.min.js"></script>
+	<script src="../assets/js/datatables/pdfmake.min.js"></script>
+	<script src="../assets/js/datatables/vfs_fonts.js"></script>
+	<script src="../assets/js/datatables/buttons.html5.min.js"></script>
+
+	<!-- Sweetalert2 -->
+	<script src="../assets/js/sweetalert2/sweetalert2.all.min.js"></script>
+
+	<!-- Maxlength -->
+	<script src="../assets/js/maxlength/maxlength.js"></script>
+
+	<!-- Bootstrap Datepicker -->
+	<script src="../assets/js/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+	<script src="../assets/js/bootstrap-datepicker/bootstrap-datepicker.es.min.js"></script>
+
+	<!-- Bootstrap select -->
+	<script src="../assets/js/bootstrap-select/bootstrap-select.min.js"></script>
+	<!-- Idioma bootstrap-select -->
+	<script src="../assets/js/bootstrap-select/defaults-es_ES.js"></script>
+
+	<script src="scripts/sesion.js"></script>
+
+	<script src="scripts/articulo.js"></script>
+
+</body>
+
+</html>
+
+

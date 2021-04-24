@@ -1,0 +1,430 @@
+/*Padding de input calendario*/
+.input-group-text {
+	padding: 10px;
+}	
+/*Espaciado encabezado tabla detalles*/
+#opDetalle{
+    padding-right: 2.5rem;
+    padding-left: 2.5rem;
+}    
+
+/*data table pagination color*/
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #3479c4;
+    border-color: #3479c4;
+}
+
+.page-link {
+    color: #3479c4;
+}
+
+/*dropdown color*/
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle{
+	color: #fff;
+    background-color: #3479c4;
+    border-color: #3479c4;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+	background-color: #3479c4;
+}	
+
+/*Btn primary color aromilandia*/
+.btn-primary{
+	background-color: #3479c4;
+    border-color: #3479c4;
+}
+
+.btn-primary:hover{
+	background-color: #255a93 !important;
+    border-color: #255a93 !important;
+}
+
+.input-group-prepend span {
+    background-color: #104f95;
+    border-color: #104f95;
+}
+
+/*Etiqueta a color cuando esta activo*/
+.dropdown-item:active {
+  background-color: #3479c4;
+}
+
+/*Padding celdas datatable*/
+table.dataTable td {
+  padding: 8px;
+}
+
+/*Padding celdas datatable*/
+table#tblDetalles td {
+  padding: 8px;
+}
+
+/*Alto de inputs*/
+.form-control{
+	height: auto;
+}
+
+/*Input type file*/
+input[type="file" i] {
+    text-overflow: ellipsis !important;
+    overflow: hidden !important;
+}
+
+/*Correcion de que no muestra los datos de tabla al imprimir datatable*/
+@media print{       
+	body {
+		color:black !important;
+	}    
+}
+
+/*Correcion de espacio en bootstrap*/
+.input-group-prepend{
+	margin-right: 0px;
+}
+
+/*Logo login*/
+.logo-login{
+	display: block; 
+	width: 90px; 
+	margin: 0 auto;
+}
+/*Solucion al error de paginacion datatables*/
+.pagination{
+	flex-wrap: wrap;
+}
+
+/*Color de barra de navegacion*/
+.sidebar-light .sidebar-brand {
+	background: #065ab8 !important;
+}	
+
+.bg-navbar {
+	background: #065ab8cf !important;
+}	
+
+/*Icono y nombre de usuario*/
+.img-user{
+	height: 2rem;
+    width: 2rem;
+}
+
+.name-user{
+	font-size: 16px;
+}
+
+/*Quitar borde a boton que oculta menu*/
+.topbar #sidebarToggleTop {
+	-webkit-box-shadow: none !important;
+}	
+
+/*Modificaciones datatables*/
+div.dataTables_wrapper div.dataTables_length label {
+    margin-top: 15px !important;
+}
+
+@media (min-width: 769px){
+	div.dt-buttons{
+	    position: absolute !important;
+	}	
+}
+
+@media (max-width: 768px){
+	div.dt-buttons{
+	    margin-bottom: 20px;
+	}	
+}
+
+
+/*Boton cerrar sesion*/
+.cerrar-sesion{
+	cursor: pointer;
+}
+
+/*Swalfire2 Tamaño letra*/
+.swal2-popup{
+	font-size: 12px !important;
+}	
+
+/*Iconos dashboard*/
+.contenedor-icono-dashboard{
+	width: 65px;
+    height: 65px;
+    margin-left: 15px; 
+    border-radius: 5px;
+}
+
+.icono-dashboard{
+	font-size: 2.2em; display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 64px;
+}
+
+a.a-dashboard{
+	text-decoration: none;
+}
+
+/*Input ancho*/
+@media (max-width: 992px) {
+	.input-width-50-100{
+		width: 100%;
+	}
+}
+
+@media (min-width: 993px) {
+	.input-width-50-100{
+		width: 50%;
+	}
+}
+
+/*Cargando Modal*/
+.cargando-modal{
+	display: block;
+    margin: 0 auto;
+}
+
+/*Preload*/
+#preload{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	min-height: 100vh;
+}
+
+.gif-cargando{
+	width: 60px;
+}
+
+/*Venta*/
+@media (min-width: 993px) {
+	#datos-venta{
+		width: 40%;
+		margin-right: 5%;
+	}
+
+	#datos-cliente{
+		width: 55%;
+	}
+
+	#div-descrip{
+		width: 40%;
+	}
+
+	#div-preciov{
+		width: 20%;
+		padding-left: 30px;
+	}
+
+	#div-cantart{
+		width: 20%;
+		padding-left: 30px;
+		padding-right: 20px;
+	}
+
+
+	#div-diac{
+		width: 25%;
+	}
+
+	#div-montoabo{
+		width: 25%;
+		padding-left: 30px;
+	}
+
+	#div-cuotas{
+		width: 25%;
+		padding-left: 30px;
+	}
+
+	#div-montocuo{
+		width: 25%;
+		padding-left: 30px;
+	}
+
+	#div-total{
+		width: 30%;
+	}
+}
+
+@media (max-width: 992px) {
+	#datos-venta{
+		width: 100%;
+	}
+
+	#datos-cliente{
+		width: 100%;
+	}
+
+	#div-descrip{
+		width: 100%;
+	}
+
+	#div-preciov{
+		width: 50%;
+		padding-right: 30px;
+	}
+
+	#div-cantart{
+		width: 50%;
+		padding-left: 30px;
+	}
+
+	#div-agregar{
+    	display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+	}
+
+
+	#div-diac{
+		width: 50%;
+	}
+
+	#div-montoabo{
+		width: 50%;
+		padding-left: 30px;
+	}
+
+	#div-cuotas{
+		width: 50%;
+	}
+
+	#div-montocuo{
+		width: 50%;
+		padding-left: 30px;
+	}
+
+	#div-total{
+		width: 50%;
+	}
+
+	
+}
+
+
+@media (min-width: 577px) {
+
+	#div-nroc{
+		width: 100%;
+	}
+
+	#div-fechav{
+		width: 100%;
+	}
+
+
+	#div-dni{
+		width: 40%;
+	}
+
+	#div-ayn{
+		width: 60%;
+		padding-left: 30px;
+	}
+
+	#div-direc{
+		width: 100%;
+	}
+
+	#div-cobrador{
+		width: 100%;
+	}
+
+}
+
+@media (max-width: 576px) {
+
+	#div-nroc{
+		width: 100%;
+	}
+
+	#div-fechav{
+		width: 100%;
+	}
+
+
+	#div-dni{
+		width: 100%;
+	}
+
+	#div-ayn{
+		width: 100%;
+	}
+
+	#div-direc{
+		width: 100%;
+	}
+
+	#div-diac{
+		width: 100%;
+		padding-left: 0px;
+	}
+
+	#div-cobrador{
+		width: 100%;
+	}
+
+
+	#div-montoabo{
+		width: 100%;
+		padding-left: 0px;
+	}
+
+	#div-cuotas{
+		width: 100%;
+		padding-left: 0px;
+	}
+
+	#div-montocuo{
+		width: 100%;
+		padding-left: 0px;
+	}
+
+	#div-total{
+		width: 75%;
+	}
+}
+
+#datos-articulo{
+	width: 100%;
+}
+
+#datos-pago{
+	width: 100%;
+}
+
+#datos-total{
+	width: 100%;
+}
+
+#datos-cuotas{
+	width: 100%;
+}
+
+/*Cuotas*/
+#textFiltro{
+	display: flex; 
+	justify-content: center; 
+	align-items: center;
+}
+
+@media (min-width: 577px) {
+	#textFiltro{
+		font-size: 20px;
+	}
+}
+
+/*configuracion*/
+.div-img-logo-icono{
+	display: flex; 
+	justify-content: center; 
+	align-items: center; 
+	border: 1px solid gainsboro; 
+	border-radius:12px;
+}
+

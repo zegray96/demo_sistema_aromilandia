@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html>
+<head lang="es">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link id="iconoPagina" href="../assets/img/icono.ico" rel="icon">
+	<title id="tituloPagina"></title>
+
+	<link rel="stylesheet" href="../assets/css/fontawesome/all.min.css">
+	<link rel="stylesheet" href="../assets/css/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" href="../assets/css/ruang-admin.min.css" >
+	<link rel="stylesheet" href="../assets/css/datatables/dataTables.bootstrap4.min.css">
+	<!-- Bootstrap DatePicker -->
+	<link rel="stylesheet" href="../assets/css/bootstrap-datepicker/bootstrap-datepicker.min.css">
+	<!-- Bootstrap select -->
+	<link rel="stylesheet" href="../assets/css/bootstrap-select/bootstrap-select.min.css">
+
+	<link rel="stylesheet" href="../assets/css/style.css">
+
+
+</head>
+
+<body id="page-top">
+	<!-- Preload -->
+	<div id="preload">
+		<div class="spinner-border"></div>
+	</div>
+	<!-- Fin preload -->
+
+	<!-- Wrapper -->
+	<div id="wrapper" style="display: none;">
+		<!-- Sidebar -->
+		<ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard">
+				<div class="sidebar-brand-icon">
+					<img id="logoHeader" src="../assets/img/logo-con-borde.png">
+				</div>
+				<div id="nombreEmpresaHeader" class="sidebar-brand-text mx-2">Aromilandia</div>
+			</a>
+			<hr class="sidebar-divider my-0">
+			<li class="nav-item active">
+				<a class="nav-link" href="dashboard">
+					<i class="fas fa-home"></i>
+					<span>Dashboard</span></a>
+			</li>
+				<hr class="sidebar-divider">
+
+				<div class="sidebar-heading">
+					Secciones
+				</div>
+
+				<!-- Acceso -->
+
+				<li class="nav-item">
+						<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true"
+						aria-controls="collapseTable">
+						<i class="fas fa-user-lock"></i>
+						<span>Acceso</span>
+					</a>
+					<div id="collapseTable" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+						<div class="bg-white py-2 collapse-inner rounded">
+							<a class="collapse-item" href="usuarios"><i class="fas fa-user"></i> Usuarios</a>
+							<a class="collapse-item" href="roles"><i class="fas fa-user-cog"></i> Roles</a>
+						</div>
+					</div>
+				</li>
+
+			<!-- Clientes -->
+
+			<li class="nav-item">
+				<a class="nav-link" href="clientes">
+					<i class="fas fa-users"></i>
+					<span>Clientes</span>
+				</a>
+			</li>
+
+
+			<!-- Articulos -->
+
+			<li class="nav-item">
+				<a class="nav-link" href="articulos">
+					<i class="fas fa-box-open"></i>
+					<span>Articulos</span>
+				</a>
+			</li>
+
+
+			<!-- Presupuestos -->
+
+
+			<li class="nav-item">
+				<a class="nav-link" href="presupuestos">
+					<i class="fas fa-dollar-sign"></i>
+					<span>Presupuestos</span>
+				</a>
+			</li>
+
+
+			<hr class="sidebar-divider">
+			<div class="version">Version 1.9</div>
+
+		</ul>
+		<!-- Sidebar -->
+
+		<!-- Content-wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+			<!-- Content -->
+			<div id="content">
+				<!-- TopBar -->
+				<nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
+						<button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
+							<i class="fa fa-bars"></i>
+						</button>
+						<span class="ml-2 text-white name-user">
+							Sucursal 1
+						</span>
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item dropdown no-arrow">
+								<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false">
+								<img class="img-user" src="../assets/img/user.png">
+								<span id="spanApellidoNombreUsu" class="ml-2 d-none d-lg-inline text-white name-user">
+									Perez Jose
+								</span>
+							</a>
+							<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+								<a class="dropdown-item" href="mi-cuenta">
+									<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+									Mi Cuenta
+								</a>
+
+								<a class="dropdown-item" href="configuracion">
+									<i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+									Configuración
+								</a>
+
+
+								<div class="dropdown-divider"></div>
+								<a id="btnCerrarSesion" class="dropdown-item cerrar-sesion">
+									<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+									Cerrar Sesión
+								</a>
+							</div>
+						</li>
+					</ul>
+				</nav>
+				<!-- Topbar -->
+
+				<!-- FIN HEADER -->
+
+				<!-- Container fluid -->
+				<div class="container-fluid" id="container-wrapper">
+
+					<div class="justify-content-between mb-4">
+						<div class="row">
+							<div class="col-sm-8">
+								<h1 class="h3 mb-0 text-gray-800"><i class="fas fa-users"></i> Clientes</h1>
+							</div>
+							<div class="col-sm-4">
+								<div class="btn-group float-right mt-3 mt-sm-0" role="group">
+									<button id='btnNuevo' class='btn btn-success'><i class='fas fa-plus-circle'></i> Nuevo</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row mb-3">
+						<div class="col-lg-12">
+							<div class="card mb-4">
+								<div id="contenedor-cabecera" class="card-header py-1 d-flex flex-row align-items-center justify-content-between">
+									<!--  -->
+								</div>
+								<!-- Tabla -->
+								<div id="listado" class="table-responsive p-3">
+									<table id="tblListado" class="table align-items-center table-hover table-bordered" style="width: 100%;">
+										<thead class="thead-light">
+											<th><i class="fas fa-th-list ml-2 mr-2"></i></th>
+											<th>&nbsp;Cod.&nbsp;</th>
+											<th>&nbsp;Estado&nbsp;</th>
+											<th>&nbsp;Apellido&nbsp;y&nbsp;Nombre&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+											<th>&nbsp;Cuit&nbsp;</th>
+											<th>&nbsp;Dni&nbsp;</th>
+											<th>&nbsp;Domicilio&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+											<th>&nbsp;Teléfono&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+											<th>&nbsp;Localidad&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+											<th>&nbsp;Provincia&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+
+										</thead>
+										<tbody>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>1</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Thor Alexander</td>
+												<td>50500419</td>
+												<td>50500419</td>
+												<td>Ap #472-2248 At Road</td>
+												<td>(506) 189-4013</td>
+												<td>C</td>
+												<td>HH</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>2</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Valentine Morse</td>
+												<td>38736092</td>
+												<td>38736092</td>
+												<td>P.O. Box 208, 758 Curabitur St.</td>
+												<td>(682) 363-7253</td>
+												<td>Sin</td>
+												<td>ANT</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>3</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Amos Gamble</td>
+												<td>17228662</td>
+												<td>17228662</td>
+												<td>P.O. Box 190, 6973 Pharetra Rd.</td>
+												<td>(546) 819-3420</td>
+												<td>Pomorskie</td>
+												<td>Glamorgan</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>4</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Erasmus Gray</td>
+												<td>18715109</td>
+												<td>18715109</td>
+												<td>258-9049 Elit, Rd.</td>
+												<td>(696) 853-1941</td>
+												<td>Munster</td>
+												<td>Antioquia</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>5</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Zane Cooke</td>
+												<td>34054458</td>
+												<td>34054458</td>
+												<td>9702 Odio Rd.</td>
+												<td>(967) 436-9674</td>
+												<td>BR</td>
+												<td>Leinster</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>6</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Calvin Foster</td>
+												<td>45966923</td>
+												<td>45966923</td>
+												<td>206-3519 Mauris Rd.</td>
+												<td>(832) 296-6031</td>
+												<td>QC</td>
+												<td>NSW</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>7</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Fitzgerald Sanford</td>
+												<td>20416427</td>
+												<td>20416427</td>
+												<td>178-2540 Sagittis. St.</td>
+												<td>(732) 745-3171</td>
+												<td>Victoria</td>
+												<td>NI</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>8</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Calvin Branch</td>
+												<td>22602702</td>
+												<td>22602702</td>
+												<td>Ap #298-4193 Urna, St.</td>
+												<td>(137) 572-9960</td>
+												<td>EX</td>
+												<td>NSW</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>9</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Thaddeus Burks</td>
+												<td>32430520</td>
+												<td>32430520</td>
+												<td>Ap #614-9672 Montes, Rd.</td>
+												<td>(329) 174-2359</td>
+												<td>Ontario</td>
+												<td>UT</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>10</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Oleg Maynard</td>
+												<td>50540494</td>
+												<td>50540494</td>
+												<td>1718 Velit. Street</td>
+												<td>(920) 186-0237</td>
+												<td>Pue</td>
+												<td>AB</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>11</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Malik Gilliam</td>
+												<td>17573550</td>
+												<td>17573550</td>
+												<td>455-3101 Aliquam Avenue</td>
+												<td>(233) 654-9199</td>
+												<td>MB</td>
+												<td>PR</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>12</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Vernon Wall</td>
+												<td>31381401</td>
+												<td>31381401</td>
+												<td>P.O. Box 877, 5540 In Rd.</td>
+												<td>(609) 342-9114</td>
+												<td>YO</td>
+												<td>WY</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>13</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Samson Bartlett</td>
+												<td>27843568</td>
+												<td>27843568</td>
+												<td>620-4731 Vitae Ave</td>
+												<td>(501) 669-2814</td>
+												<td>LU</td>
+												<td>Victoria</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>14</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Macon Walters</td>
+												<td>23021686</td>
+												<td>23021686</td>
+												<td>P.O. Box 996, 2221 Mattis. St.</td>
+												<td>(860) 995-2553</td>
+												<td>PIU</td>
+												<td>ANT</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>15</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Benjamin Robertson</td>
+												<td>32145900</td>
+												<td>32145900</td>
+												<td>P.O. Box 140, 834 Sed Rd.</td>
+												<td>(704) 261-4931</td>
+												<td>Punjab</td>
+												<td>H</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>16</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Nathan Pickett</td>
+												<td>48774199</td>
+												<td>48774199</td>
+												<td>335-2555 Dictum St.</td>
+												<td>(829) 141-6380</td>
+												<td>North Island</td>
+												<td>Konya</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>17</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Abraham Holmes</td>
+												<td>10962341</td>
+												<td>10962341</td>
+												<td>749-1650 Sem Avenue</td>
+												<td>(771) 907-9419</td>
+												<td>UP</td>
+												<td>NL</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>18</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Keaton Sutton</td>
+												<td>14896317</td>
+												<td>14896317</td>
+												<td>392-7656 Non Road</td>
+												<td>(920) 608-6420</td>
+												<td>ON</td>
+												<td>Virginia</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>19</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Drake Love</td>
+												<td>5148535</td>
+												<td>5148535</td>
+												<td>122-6429 Non, Ave</td>
+												<td>(575) 892-1169</td>
+												<td>BA</td>
+												<td>VEN</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>20</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Garth Cantrell</td>
+												<td>41823006</td>
+												<td>41823006</td>
+												<td>443-2882 Nisi. Rd.</td>
+												<td>(785) 656-1531</td>
+												<td>North Chungcheong</td>
+												<td>Gilgit Baltistan</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>21</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Kenyon Mercer</td>
+												<td>37831042</td>
+												<td>37831042</td>
+												<td>3902 Faucibus St.</td>
+												<td>(426) 617-7755</td>
+												<td>NI</td>
+												<td>WA</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>22</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Chaim Monroe</td>
+												<td>19555077</td>
+												<td>19555077</td>
+												<td>P.O. Box 739, 9941 Dictum Road</td>
+												<td>(795) 780-7586</td>
+												<td>QC</td>
+												<td>Galicia</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>23</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Gregory Coffey</td>
+												<td>18142488</td>
+												<td>18142488</td>
+												<td>504-9777 Mi. Street</td>
+												<td>(230) 735-1505</td>
+												<td>CA</td>
+												<td>Pernambuco</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>24</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Buckminster Mcintyre</td>
+												<td>41750421</td>
+												<td>41750421</td>
+												<td>556-2154 Arcu. Ave</td>
+												<td>(158) 295-5106</td>
+												<td>ON</td>
+												<td>III</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>25</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Cole Owen</td>
+												<td>33921618</td>
+												<td>33921618</td>
+												<td>1659 Odio. St.</td>
+												<td>(921) 892-6482</td>
+												<td>Veneto</td>
+												<td>PU</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>26</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Abel Hewitt</td>
+												<td>19633609</td>
+												<td>19633609</td>
+												<td>Ap #757-2647 Gravida. Rd.</td>
+												<td>(651) 267-7526</td>
+												<td>Punjab</td>
+												<td>SO</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>27</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Palmer Owen</td>
+												<td>50288728</td>
+												<td>50288728</td>
+												<td>Ap #655-4876 Malesuada St.</td>
+												<td>(235) 447-8220</td>
+												<td>Luik</td>
+												<td>SI</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>28</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Mufutau Madden</td>
+												<td>40767615</td>
+												<td>40767615</td>
+												<td>Ap #163-1070 Ipsum Avenue</td>
+												<td>(589) 784-2059</td>
+												<td>Gye</td>
+												<td>Centre</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>29</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Mannix Mcfadden</td>
+												<td>20551727</td>
+												<td>20551727</td>
+												<td>Ap #355-1689 Adipiscing Rd.</td>
+												<td>(131) 340-6358</td>
+												<td>M</td>
+												<td>Berwickshire</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>30</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Gannon Jarvis</td>
+												<td>21618683</td>
+												<td>21618683</td>
+												<td>P.O. Box 500, 5565 Vulputate St.</td>
+												<td>(941) 329-5965</td>
+												<td>QC</td>
+												<td>São Paulo</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>31</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Elijah Rivera</td>
+												<td>16073110</td>
+												<td>16073110</td>
+												<td>6478 Fringilla Rd.</td>
+												<td>(748) 781-0187</td>
+												<td>Vlaams-Brabant</td>
+												<td>MI</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>32</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Callum Larson</td>
+												<td>5325659</td>
+												<td>5325659</td>
+												<td>Ap #185-369 Ornare, Rd.</td>
+												<td>(783) 476-4029</td>
+												<td>Île-de-France</td>
+												<td>Florida</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>33</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Griffin Puckett</td>
+												<td>37228640</td>
+												<td>37228640</td>
+												<td>207-8271 Facilisis Rd.</td>
+												<td>(479) 388-1314</td>
+												<td>Hat</td>
+												<td>Alajuela</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>34</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Hamilton Heath</td>
+												<td>26343154</td>
+												<td>26343154</td>
+												<td>P.O. Box 225, 2156 Hendrerit Street</td>
+												<td>(660) 114-5947</td>
+												<td>Liguria</td>
+												<td>SJ</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>35</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Merritt Mcfadden</td>
+												<td>18898129</td>
+												<td>18898129</td>
+												<td>783 Nam Road</td>
+												<td>(887) 137-0249</td>
+												<td>NO</td>
+												<td>Colorado</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>36</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Isaac Horne</td>
+												<td>16951400</td>
+												<td>16951400</td>
+												<td>6145 Ac, St.</td>
+												<td>(270) 129-2719</td>
+												<td>Flintshire</td>
+												<td>Alajuela</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>37</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Moses Leach</td>
+												<td>22474717</td>
+												<td>22474717</td>
+												<td>P.O. Box 594, 529 Sed St.</td>
+												<td>(409) 312-6737</td>
+												<td>Ceuta</td>
+												<td>Andhra Pradesh</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>38</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Mason Medina</td>
+												<td>12184833</td>
+												<td>12184833</td>
+												<td>560-1328 Pulvinar Rd.</td>
+												<td>(374) 414-5060</td>
+												<td>UP</td>
+												<td>New Brunswick</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>39</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Hilel Obrien</td>
+												<td>13770320</td>
+												<td>13770320</td>
+												<td>P.O. Box 642, 4438 Tincidunt Avenue</td>
+												<td>(173) 218-3038</td>
+												<td>ARE</td>
+												<td>ANT</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>40</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Nathaniel Mcclain</td>
+												<td>49740234</td>
+												<td>49740234</td>
+												<td>904-237 Sed Street</td>
+												<td>(911) 175-5775</td>
+												<td>S.L</td>
+												<td>Luxemburg</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>41</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Malik Miranda</td>
+												<td>32575939</td>
+												<td>32575939</td>
+												<td>Ap #798-1244 Tristique Avenue</td>
+												<td>(476) 439-8478</td>
+												<td>Schleswig-Holstein</td>
+												<td>JH</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>42</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Silas Solis</td>
+												<td>23772935</td>
+												<td>23772935</td>
+												<td>Ap #371-8669 Et Street</td>
+												<td>(487) 641-1333</td>
+												<td>ML</td>
+												<td>Västra Götalands län</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>43</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Kamal Greene</td>
+												<td>8005628</td>
+												<td>8005628</td>
+												<td>8189 Curabitur Road</td>
+												<td>(312) 249-3380</td>
+												<td>LU</td>
+												<td>Balochistan</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>44</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Austin Vargas</td>
+												<td>12289944</td>
+												<td>12289944</td>
+												<td>Ap #230-5180 Praesent Av.</td>
+												<td>(167) 796-1457</td>
+												<td>Ver</td>
+												<td>LAM</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>45</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Amery Mclean</td>
+												<td>5225769</td>
+												<td>5225769</td>
+												<td>184-2884 Tincidunt. Ave</td>
+												<td>(145) 629-4410</td>
+												<td>X</td>
+												<td>MP</td>
+											</tr>
+											<tr>
+												<td><button class="btn btn-warning btn-sm" onclick="mostrar('1')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td>46</td>
+												<td><span class="badge badge-success">ACTIVO</span></td>
+												<td>Xander Decker</td>
+												<td>21123313</td>
+												<td>21123313</td>
+												<td>5330 Mus. Avenue</td>
+												<td>(515) 581-7937</td>
+												<td>Katsina</td>
+												<td>Puno</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<!-- End tabla -->
+
+								<!-- Formulario -->
+								<div id="formulario">
+									<div class="card-body">
+										<form id="form">
+
+											<input type="hidden" id="codCliente" name="codCliente">
+
+											<div class="form-group row" id="divCodCliente">
+												<div class="col-12">
+													<h5><span class="badge badge-secondary" id="codClienteText"></span></h5>
+												</div>
+											</div>
+
+											<div class="form-group row mb-3">
+												<div class="col-12 col-md-6">
+													<label><span class="text-danger">(*)</span> Estado</label>
+													<select id="estado" name="estado" data-lang="es_ES" title="Seleccione estado" class="selectpicker form-control" required>
+														<option value="ACTIVO">ACTIVO</option>
+														<option value="INACTIVO">INACTIVO</option>
+													</select>
+												</div>
+
+												<div class="col-12 col-md-6 mt-3 mt-md-0">
+													<label><span class="text-danger">(*)</span> Cuit</label>
+													<input type="text" class="form-control" id="cuit" name="cuit" data-maxsize="11" required autocomplete="off">
+												</div>
+
+											</div>
+
+											<div class="form-group row mb-3">
+												<div class="col-12 col-md-6">
+													<label><span class="text-danger">(*)</span> Apellido y Nombre</label>
+													<input type="text" class="form-control" id="apellidoNombre" name="apellidoNombre"
+													data-maxsize="30" required autocomplete="off" style="text-transform: capitalize;">
+												</div>
+
+												<div class="col-12 col-md-6 mt-3 mt-md-0">
+													<label><span class="text-danger">(*)</span> Dni</label>
+													<input type="text" class="form-control" id="dni" name="dni" data-maxsize="8" required autocomplete="off">
+												</div>
+											</div>
+
+											<div class="form-group row mb-3">
+												<div class="col-12 col-md-6">
+													<label><span class="text-danger">(*)</span> Domicilio</label>
+													<input type="text" class="form-control" id="domicilio" name="domicilio"
+													data-maxsize="60" required autocomplete="off" style="text-transform: capitalize;">
+												</div>
+
+												<div class="col-12 col-md-6 mt-3 mt-md-0">
+													<label><span class="text-danger">(*)</span> Telefono</label>
+													<input type="text" class="form-control" id="telefono" name="telefono" data-maxsize="50" required autocomplete="off">
+												</div>
+											</div>
+
+											<div class="form-group row mb-3">
+												<div class="col-12 col-md-6">
+													<label><span class="text-danger">(*)</span> Localidad</label>
+													<input type="text" class="form-control" id="localidad" name="localidad"
+													data-maxsize="50" required autocomplete="off" style="text-transform: capitalize;">
+												</div>
+
+												<div class="col-12 col-md-6 mt-3 mt-md-0">
+													<label><span class="text-danger">(*)</span> Provincia</label>
+													<input type="text" class="form-control" id="provincia" name="provincia" data-maxsize="50" required autocomplete="off" style="text-transform: capitalize;">
+												</div>
+											</div>
+
+
+
+
+
+											<div class="mt-4 mb-4 float-right">
+												<button type="button" id="btnCancelar" class="btn btn-danger">Cancelar</button>
+												<button type="submit" id="btnGuardar" class="btn btn-primary ml-3">Guardar</button>
+											</div>
+
+										</form>
+									</div>
+								</div>
+								<!-- End formulario -->
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End Container fluid -->
+			</div>
+			<!-- End Content -->
+
+			<!-- FOOTER -->
+
+			<!--Modal Cargando -->
+			<div class="modal" id="cargandoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+				<div class="modal-dialog modal-sm">
+					<div class="modal-content">
+						<div class="modal-header">
+							<div class="spinner-border cargando-modal"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--Fin Modal Cargando -->
+
+			<!-- Footer -->
+			<footer class="sticky-footer bg-white">
+				<div class="container my-auto">
+					<div class="copyright text-center my-auto">
+						<span>Version 1.9
+
+						</span>
+					</div>
+				</div>
+			</footer>
+			<!-- Footer -->
+		</div>
+		<!-- End Content wrapper -->
+	</div>
+	<!-- End wrapper -->
+
+	<!-- Scroll to top -->
+	<a class="scroll-to-top rounded" href="#page-top">
+		<i class="fas fa-angle-up"></i>
+	</a>
+
+	<script src="../assets/js/jquery/jquery.min.js"></script>
+	<script src="../assets/js/jquery-easing/jquery.easing.min.js"></script>
+	<script src="../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+	<script src="../assets/js/ruang-admin.min.js"></script>
+
+	<!-- Datatables -->
+	<script src="../assets/js/datatables/jquery.dataTables.min.js"></script>
+	<script src="../assets/js/datatables/dataTables.bootstrap4.min.js"></script>
+	<script src="../assets/js/datatables/buttons.print.min.js"></script>
+	<script src="../assets/js/datatables/dataTables.buttons.min.js"></script>
+	<script src="../assets/js/datatables/jszip.min.js"></script>
+	<script src="../assets/js/datatables/pdfmake.min.js"></script>
+	<script src="../assets/js/datatables/vfs_fonts.js"></script>
+	<script src="../assets/js/datatables/buttons.html5.min.js"></script>
+
+	<!-- Sweetalert2 -->
+	<script src="../assets/js/sweetalert2/sweetalert2.all.min.js"></script>
+
+	<!-- Maxlength -->
+	<script src="../assets/js/maxlength/maxlength.js"></script>
+
+	<!-- Bootstrap Datepicker -->
+	<script src="../assets/js/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+	<script src="../assets/js/bootstrap-datepicker/bootstrap-datepicker.es.min.js"></script>
+
+	<!-- Bootstrap select -->
+	<script src="../assets/js/bootstrap-select/bootstrap-select.min.js"></script>
+	<!-- Idioma bootstrap-select -->
+	<script src="../assets/js/bootstrap-select/defaults-es_ES.js"></script>
+
+	<script src="scripts/sesion.js"></script>
+
+	<script src="scripts/cliente.js"></script>
+
+</body>
+
+</html>
+
+
